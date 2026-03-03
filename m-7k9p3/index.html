@@ -1,160 +1,260 @@
 <!doctype html>
 <html lang="tr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex,nofollow" />
-<title>Avlu Menü</title>
-
-<style>
-body{
-    margin:0;
-    background:#f4efe7;
-    font-family: "Georgia", serif;
-    color:#3a332c;
-}
-
-.container{
-    max-width:800px;
-    margin:auto;
-    padding:40px 20px;
-}
-
-h1{
-    text-align:center;
-    font-weight:400;
-    letter-spacing:2px;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    text-align:center;
-    font-style:italic;
-    opacity:.8;
-    margin-bottom:40px;
-}
-
-.section{
-    margin-top:60px;
-}
-
-.section h2{
-    font-size:22px;
-    font-weight:500;
-    border-bottom:1px solid #d8cfc2;
-    padding-bottom:10px;
-    margin-bottom:20px;
-    letter-spacing:1px;
-}
-
-.item{
-    margin-bottom:18px;
-}
-
-.item-title{
-    font-weight:600;
-}
-
-.item-desc{
-    font-size:14px;
-    opacity:.75;
-    margin-top:4px;
-}
-
-.poem{
-    font-size:15px;
-    line-height:1.8;
-    text-align:center;
-    margin-bottom:50px;
-    opacity:.85;
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Menü</title>
+  <style>
+    :root{
+      --bg:#f6f1e8;
+      --paper:#fffaf2;
+      --ink:#2b2b2b;
+      --muted:#6b6b6b;
+      --line:#e7dece;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      color:var(--ink);
+      background: radial-gradient(1200px 600px at 30% 10%, #fff 0%, var(--bg) 55%) fixed;
+    }
+    .wrap{
+      max-width: 880px;
+      margin: 40px auto;
+      padding: 0 16px 64px;
+    }
+    .paper{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header{
+      padding: 28px 28px 18px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0));
+    }
+    .title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    h1{
+      margin:0;
+      font-size: 28px;
+      letter-spacing:.2px;
+    }
+    .badge{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border:1px dashed var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(255,255,255,.6);
+    }
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 13px;
+      line-height:1.45;
+    }
+    main{ padding: 22px 28px 28px; }
+    .poem{
+      margin: 0;
+      padding: 16px 18px;
+      border-left: 3px solid var(--line);
+      background: rgba(255,255,255,.55);
+      border-radius: 12px;
+      line-height: 1.7;
+      color:#333;
+      font-size: 15px;
+      white-space: pre-line;
+    }
+    .section{
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .block{
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .block p{ margin:8px 0; line-height:1.6; }
+    ul{
+      margin: 8px 0 0 18px;
+      padding:0;
+      line-height: 1.75;
+    }
+    li{ margin: 4px 0; }
+    .note{
+      margin-top:14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--muted);
+      font-size: 12px;
+    }
+  </style>
 </head>
-
 <body>
-<div class="container">
+  <div class="wrap">
+    <div class="paper">
+      <header>
+        <div class="title">
+          <h1>Menü</h1>
+          <div class="badge">Bu sayfa yalnızca QR kod ile erişim içindir.</div>
+        </div>
+        <p class="subtitle">Menü PDF / görsel linkini buraya koyacağız.</p>
+      </header>
 
-<h1>Avlu Menü</h1>
-<div class="subtitle">Konağın sofrasına hoş geldiniz</div>
-
-<div class="poem">
-Bu konakta zaman acele etmez,<br>
-usul usul yürür taşların arasında.<br>
-Güneş avluya sessizce düşer,<br>
-gölgeyle ışık birbirine karışır.<br><br>
-
-Biz burada yalnızca servis yapmayız;<br>
-bir fincan kahvede hatıralar demlenir,<br>
+      <main>
+        <div class="poem">
+Bu konakta zaman acele etmez,
+usul usul yürür taşların arasında.
+Güneş avluya sessizce düşer,
+gölgeyle ışık birbirine karışır.
+Bakır cezvede kahve ağır ağır pişer,
+kokusuyla zamanı durdurur.
+Sofra bir telaşla kurulmaz burada,
+her şey yerini bilerek gelir.
+Bir tabak, bir fincan, bir bakış…
+hepsi bir sohbetin eşiğinde bekler.
+Rüzgâr dokunur eski duvarlara,
+geçmişten bir hikâye taşır gibi.
+Bir çocuk kahkahası dolaşır avluda,
+belki yarım kalmış bir sevdanın izi…
+Biz burada yalnızca servis yapmayız;
+bir fincan kahvede hatıralar demlenir,
 bir lokma ekmekte sıcaklık saklıdır.
-</div>
+Çünkü bazı yerlerde zaman akmaz…
+sessizce birikir,
+ve kalır.
+        </div>
 
-<div class="section">
-<h2>Kahvaltı</h2>
+        <section class="section">
+          <h2>Kahvaltı</h2>
+          <div class="block">
+            <p><strong>Serpme Kahvaltı</strong></p>
+            <p>Çay</p>
+            <p>Peynir Çeşitleri (Beyaz Peynir-Kaşar Peyniri-Köy Peyniri)</p>
+            <p>Zeytin Çeşitleri (Yeşil Zeytin-Siyah Zeytin- Kızarmış Zeytin)</p>
+            <p>Yeşillik Tabağı (Domates &amp; Salatalık)</p>
+            <p>Tereyağı</p>
+            <p>Bal</p>
+            <p>Sahanda Sucuklu Yumurta</p>
 
-<div class="item">
-<div class="item-title">Serpme Kahvaltı</div>
-<div class="item-desc">
-Çay, peynir çeşitleri, zeytin çeşitleri, yeşillik tabağı,
-tereyağı, bal, sucuklu yumurta, anne reçelleri,
-ev yapımı kahvaltı salçası, özel kahvaltı sosu,
-peksimet, pişi, patates kızartması, ekşi maya ev ekmeği.
-</div>
-</div>
+            <p><strong>Avlunun Anne Reçelleri</strong><br>
+              Meyvelerini dalından topladığımız, annemizin emeğiyle hazırlanan reçeller
+            </p>
 
-</div>
+            <p><strong>Anne Yapımı Kahvaltı Salçası</strong><br>
+              Geleneksel yöntemlerle hazırlanan, yoğun lezzetli ev yapımı salça
+            </p>
 
-<div class="section">
-<h2>Sıcak İçecekler</h2>
+            <p><strong>Avlu’ya Özel Kahvaltı Sosu</strong><br>
+              Kendi tarifimizle hazırlanan, kahvaltıya eşlik eden özel lezzet
+            </p>
 
-<div class="item"><div class="item-title">Çay</div></div>
-<div class="item"><div class="item-title">Bitki Çayları</div></div>
-<div class="item"><div class="item-title">Türk Kahvesi</div></div>
-<div class="item"><div class="item-title">Sütlü Kahve</div></div>
-<div class="item"><div class="item-title">Menengiç Kahvesi</div></div>
-<div class="item"><div class="item-title">Filtre Kahve</div></div>
-<div class="item"><div class="item-title">Salep</div></div>
-<div class="item"><div class="item-title">Sıcak Çikolata</div></div>
+            <p>Peksimet</p>
+            <p>Pişi</p>
+            <p>Patates Kızartması</p>
+            <p>Her sabah taze mayalanan hamurdan, sıcacık ve yumuşacık</p>
+            <p>Ekşi Maya Ev Ekmeği</p>
+          </div>
+        </section>
 
-</div>
+        <section class="section">
+          <h2>Sıcak İçecekler</h2>
+          <div class="block">
+            <ul>
+              <li>Çay (Fincan / Bardak)</li>
+              <li>Bitki Çayları (Adaçayı, Ihlamur vb.)</li>
+              <li>
+                Türk Kahvesi<br>
+                Türk kahvesinin hatrı 40 yıl derler…<br>
+                Bizce Avlu’da içilenin hatrı biraz daha uzun. Ağır ağır pişen, köpüğü yerinde bir kahve…<br>
+                Sohbetin en güzel yerinde masaya gelir.
+              </li>
+              <li>Sütlü Kahve</li>
+              <li>Menengiç Kahvesi</li>
+              <li>Filtre Kahve</li>
+              <li>Salep</li>
+              <li>Sıcak Çikolata</li>
+            </ul>
+          </div>
+        </section>
 
-<div class="section">
-<h2>Soğuk İçecekler</h2>
+        <section class="section">
+          <h2>Soğuk İçecekler</h2>
+          <div class="block">
+            <ul>
+              <li>
+                Ev Yapımı Limonata<br>
+                Limonatamızın bir sırrı yok…<br>
+                Sadece gerçekten limondan yapıyoruz. Taze sıkılmış limonların ferahlığı, yazın sıcak günlerinde avlunun serinliğiyle buluşur.<br>
+                Bu yüzden çoğu misafirimiz ilk yudumdan sonra aynı şeyi söyler:<br>
+                “Bir tane daha alalım.”
+              </li>
+              <li>Soğuk Kahve</li>
+              <li>Ice Tea</li>
+              <li>Kola / Fanta / Gazoz</li>
+              <li>Sade Soda</li>
+              <li>Meyveli Soda</li>
+            </ul>
+          </div>
+        </section>
 
-<div class="item">
-<div class="item-title">Ev Yapımı Limonata</div>
-<div class="item-desc">Gerçek limondan, ferah ve taze.</div>
-</div>
+        <section class="section">
+          <h2>Avlu İkramları</h2>
+          <div class="block">
+            <p>(Ev yapımı &amp; günlük hazırlanır)</p>
+            <ul>
+              <li>Çilekli Tart</li>
+              <li>Brownie</li>
+              <li>Dereotlu Poğaça</li>
+              <li>Anne Kurabiyesi</li>
+            </ul>
+            <p><strong>Bugün Anne elinden:</strong><br>
+              Güne göre değişen kek, kurabiye ve diğer çeşitlerimizi sorabilirsiniz.
+            </p>
+          </div>
+        </section>
 
-<div class="item"><div class="item-title">Soğuk Kahve</div></div>
-<div class="item"><div class="item-title">Ice Tea</div></div>
-<div class="item"><div class="item-title">Kola / Fanta / Gazoz</div></div>
-<div class="item"><div class="item-title">Sade Soda</div></div>
-<div class="item"><div class="item-title">Meyveli Soda</div></div>
+        <section class="section">
+          <h2>TOST ÇEŞİTLERİ</h2>
+          <div class="block">
+            <p><strong>Kaşarlı Tost</strong><br>
+              Eritilmiş kaşarın sıcak ekmekle buluştuğu sade ve lezzetli bir klasik
+            </p>
 
-</div>
+            <p><strong>Karışık Tost</strong><br>
+              Kaşar peyniri ve lezzetli içeriğiyle doyurucu bir alternatif
+            </p>
 
-<div class="section">
-<h2>Avlu İkramları</h2>
+            <p><strong>Tost Menü</strong><br>
+              Sıcacık tostun yanında;<br>
+              taze domates &amp; salatalık, zeytin ve çıtır patates kızartması ile birlikte servis edilir.
+            </p>
+          </div>
 
-<div class="item"><div class="item-title">Çilekli Tart</div></div>
-<div class="item"><div class="item-title">Brownie</div></div>
-<div class="item"><div class="item-title">Dereotlu Poğaça</div></div>
-<div class="item"><div class="item-title">Anne Kurabiyesi</div></div>
-
-</div>
-
-<div class="section">
-<h2>Tost Çeşitleri</h2>
-
-<div class="item"><div class="item-title">Kaşarlı Tost</div></div>
-<div class="item"><div class="item-title">Karışık Tost</div></div>
-<div class="item">
-<div class="item-title">Tost Menü</div>
-<div class="item-desc">Domates, salatalık, zeytin ve patates kızartması ile servis edilir.</div>
-</div>
-
-</div>
-
-</div>
+          <div class="note">Not: Bu sayfa “gizli” değildir; linki bilen açar. QR ile “pratikte erişim” sağlarız.</div>
+        </section>
+      </main>
+    </div>
+  </div>
 </body>
 </html>
