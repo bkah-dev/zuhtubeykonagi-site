@@ -178,11 +178,9 @@
       line-height: 1.85;
       color: rgba(74,63,53,0.78);
       font-size: 15px;
-    
       text-align: center;
       max-width: 520px;
       margin: 18px auto;
-    
       font-style: italic;
       letter-spacing: 0.3px;
     }
@@ -215,39 +213,35 @@
       padding: 16px;
     }
 
-    .item{
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(74,63,53,0.10);
-      margin-bottom: 10px;
+    /* fiyat satırı */
+    .menu-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,0.55);
+      border:1px solid rgba(74,63,53,0.10);
+      margin-bottom:8px;
     }
-    .item:last-child{ margin-bottom:0; }
-    .item .name{
-      font-weight: 700;
-      color: rgba(74,63,53,0.92);
-    }
-    .item .desc{
-      margin-top: 6px;
-      color: rgba(74,63,53,0.72);
-      line-height: 1.65;
-      font-size: 14px;
+    .menu-item:last-child{ margin-bottom:0; }
+
+    .menu-price{
+      font-weight:700;
+      color:var(--color-primary);
+      white-space: nowrap;
     }
 
-    .list{
-      margin: 8px 0 0;
-      padding: 0;
-      list-style: none;
-      display:grid;
-      gap: 10px;
-    }
-    .list li{
+    .menu-sub{
+      margin: 6px 0 12px;
       padding: 10px 12px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.50);
       border: 1px solid rgba(74,63,53,0.10);
-      color: rgba(74,63,53,0.86);
-      line-height: 1.55;
+      color: rgba(74,63,53,0.74);
+      line-height: 1.65;
+      font-size: 14px;
     }
 
     /* Two columns on wide screens for drinks */
@@ -335,87 +329,157 @@ ve kalır.
     </div>
 
     <!-- Kahvaltı -->
-   <div class="section">
-  <div class="section-title"><h2>Kahvaltı</h2></div>
-
-  <div class="card">
-    <div class="item">
-      <div class="name">Serpme Kahvaltı</div>
-      <div class="desc">
-        Çay<br>
-        Peynir Çeşitleri (Beyaz Peynir – Kaşar Peyniri – Köy Peyniri)<br>
-        Zeytin Çeşitleri (Yeşil Zeytin – Siyah Zeytin – Kızarmış Zeytin)<br>
-        Yeşillik Tabağı (Domates &amp; Salatalık)<br>
-        Tereyağı<br>
-        Bal<br>
-        Sahanda Sucuklu Yumurta<br><br>
-
-        <strong>Avlunun Anne Reçelleri</strong><br>
-        Meyvelerini dalından topladığımız, annemizin emeğiyle hazırlanan reçeller<br><br>
-
-        <strong>Anne Yapımı Kahvaltı Salçası</strong><br>
-        Geleneksel yöntemlerle hazırlanan, yoğun lezzetli ev yapımı salça<br><br>
-
-        <strong>Avlu’ya Özel Kahvaltı Sosu</strong><br>
-        Kendi tarifimizle hazırlanan, kahvaltıya eşlik eden özel lezzet<br><br>
-
-        Pişi (Her sabah taze mayalanan hamurdan, sıcacık ve yumuşacık)<br>
-        Peksimet<br>
-        Patates Kızartması<br>
-        Ekşi Maya Ev Ekmeği
-      </div>
-    </div>
-  </div>
-</div>
-    
-    <!-- İçecekler -->
     <div class="section">
-      <div class="section-title"><h2>İçecekler</h2></div>
+      <div class="section-title"><h2>Kahvaltı</h2></div>
 
-      <div class="grid2">
-        <div class="card">
-          <div class="item">
-            <div class="name">Sıcak İçecekler</div>
-          </div>
-          <ul class="list">
-            <li>Çay (Fincan / Bardak)</li>
-            <li>Bitki Çayları (Adaçayı, Ihlamur vb.)</li>
-            <li>
-              Türk Kahvesi
-              <div class="desc" style="margin-top:6px">
-                Türk kahvesinin hatrı 40 yıl derler…<br>
-                Bizce Avlu’da içilenin hatrı biraz daha uzun. Ağır ağır pişen, köpüğü yerinde bir kahve…<br>
-                Sohbetin en güzel yerinde masaya gelir.
-              </div>
-            </li>
-            <li>Sütlü Kahve</li>
-            <li>Menengiç Kahvesi</li>
-            <li>Filtre Kahve</li>
-            <li>Salep</li>
-            <li>Sıcak Çikolata</li>
-          </ul>
+      <div class="card">
+        <div class="menu-item">
+          <span><strong>Kahvaltı (Kişi Başı)</strong></span>
+          <span class="menu-price">450 ₺</span>
         </div>
 
-        <div class="card">
-          <div class="item">
-            <div class="name">Soğuk İçecekler</div>
-          </div>
-          <ul class="list">
-            <li>
-              Ev Yapımı Limonata
-              <div class="desc" style="margin-top:6px">
-                Limonatamızın bir sırrı yok…<br>
-                Sadece gerçekten limondan yapıyoruz. Taze sıkılmış limonların ferahlığı, yazın sıcak günlerinde avlunun serinliğiyle buluşur.<br>
-                Bu yüzden çoğu misafirimiz ilk yudumdan sonra aynı şeyi söyler:<br>
-                “Bir tane daha alalım.”
-              </div>
-            </li>
-            <li>Soğuk Kahve</li>
-            <li>Ice Tea</li>
-            <li>Kola / Fanta / Gazoz</li>
-            <li>Sade Soda</li>
-            <li>Meyveli Soda</li>
-          </ul>
+        <div class="menu-sub">
+          Çay<br>
+          Peynir Çeşitleri (Beyaz Peynir – Kaşar Peyniri – Köy Peyniri)<br>
+          Zeytin Çeşitleri (Yeşil Zeytin – Siyah Zeytin – Kızarmış Zeytin)<br>
+          Yeşillik Tabağı (Domates &amp; Salatalık)<br>
+          Tereyağı<br>
+          Bal<br>
+          Sahanda Sucuklu Yumurta<br><br>
+
+          <strong>Avlunun Anne Reçelleri</strong><br>
+          Meyvelerini dalından topladığımız, annemizin emeğiyle hazırlanan reçeller<br><br>
+
+          <strong>Anne Yapımı Kahvaltı Salçası</strong><br>
+          Geleneksel yöntemlerle hazırlanan, yoğun lezzetli ev yapımı salça<br><br>
+
+          <strong>Avlu’ya Özel Kahvaltı Sosu</strong><br>
+          Kendi tarifimizle hazırlanan, kahvaltıya eşlik eden özel lezzet<br><br>
+
+          Pişi (Her sabah taze mayalanan hamurdan, sıcacık ve yumuşacık)<br>
+          Peksimet<br>
+          Patates Kızartması<br>
+          Ekşi Maya Ev Ekmeği
+        </div>
+      </div>
+    </div>
+
+    <!-- Kahvaltı Ekstraları -->
+    <div class="section">
+      <div class="section-title"><h2>Kahvaltı Ekstraları</h2></div>
+      <div class="card">
+        <div class="menu-item">
+          <span>Patates Kızartması</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Sigara Böreği (Porsiyon – 4 adet)</span>
+          <span class="menu-price">120 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Paçanga Böreği (Porsiyon – 2 adet)</span>
+          <span class="menu-price">200 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Sahanda Sucuklu Yumurta</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Kahvaltı Sosu</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Pişi (Porsiyon – 2 adet)</span>
+          <span class="menu-price">75 ₺</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sıcak İçecekler -->
+    <div class="section">
+      <div class="section-title"><h2>Sıcak İçecekler</h2></div>
+      <div class="card">
+        <div class="menu-item">
+          <span>Çay</span>
+          <span class="menu-price">25 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Bitki Çayları</span>
+          <span class="menu-price">100 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Türk Kahvesi</span>
+          <span class="menu-price">75 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Sütlü Türk Kahvesi</span>
+          <span class="menu-price">100 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Menengiç Kahvesi</span>
+          <span class="menu-price">100 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Filtre Kahve</span>
+          <span class="menu-price">120 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Salep</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Sıcak Çikolata</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soğuk İçecekler -->
+    <div class="section">
+      <div class="section-title"><h2>Soğuk İçecekler</h2></div>
+      <div class="card">
+        <div class="menu-item">
+          <span>Ev Yapımı Limonata</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-sub" style="margin-top:0;">
+          Limonatamızın bir sırrı yok…<br>
+          Sadece gerçekten limondan yapıyoruz. Taze sıkılmış limonların ferahlığı, yazın sıcak günlerinde avlunun serinliğiyle buluşur.<br>
+          Bu yüzden çoğu misafirimiz ilk yudumdan sonra aynı şeyi söyler:<br>
+          “Bir tane daha alalım.”
+        </div>
+
+        <div class="menu-item">
+          <span>Soğuk Kahve (Sütlü)</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Su</span>
+          <span class="menu-price">20 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Ice Tea</span>
+          <span class="menu-price">80 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Kola / Fanta / Gazoz</span>
+          <span class="menu-price">80 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Sade Soda</span>
+          <span class="menu-price">40 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Meyveli Soda</span>
+          <span class="menu-price">50 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Ayran</span>
+          <span class="menu-price">40 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Churchill</span>
+          <span class="menu-price">60 ₺</span>
         </div>
       </div>
     </div>
@@ -424,42 +488,36 @@ ve kalır.
     <div class="section">
       <div class="section-title"><h2>Avlu İkramları</h2></div>
       <div class="card">
-        <div class="item">
-          <div class="name">(Ev yapımı &amp; günlük hazırlanır)</div>
+        <div class="menu-item">
+          <span>Brownie</span>
+          <span class="menu-price">150 ₺</span>
         </div>
-        <ul class="list">
-          <li>Çilekli Tart</li>
-          <li>Brownie</li>
-          <li>Dereotlu Poğaça</li>
-          <li>Anne Kurabiyesi</li>
-          <li>
-            Bugün Anne elinden:
-            <div class="desc" style="margin-top:6px">Güne göre değişen kek, kurabiye ve diğer çeşitlerimizi sorabilirsiniz.</div>
-          </li>
-        </ul>
+        <div class="menu-item">
+          <span>Çilekli Turta</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Anne Kurabiyesi</span>
+          <span class="menu-price">50 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Dereotlu Poğaça</span>
+          <span class="menu-price">25 ₺</span>
+        </div>
       </div>
     </div>
 
     <!-- Tost -->
     <div class="section">
-      <div class="section-title"><h2>Tost Çeşitleri</h2></div>
+      <div class="section-title"><h2>Tost</h2></div>
       <div class="card">
-        <div class="item">
-          <div class="name">Kaşarlı Tost</div>
-          <div class="desc">Eritilmiş kaşarın sıcak ekmekle buluştuğu sade ve lezzetli bir klasik</div>
+        <div class="menu-item">
+          <span>Tost Menü</span>
+          <span class="menu-price">180 ₺</span>
         </div>
-
-        <div class="item">
-          <div class="name">Karışık Tost</div>
-          <div class="desc">Kaşar peyniri ve lezzetli içeriğiyle doyurucu bir alternatif</div>
-        </div>
-
-        <div class="item">
-          <div class="name">Tost Menü</div>
-          <div class="desc">
-            Sıcacık tostun yanında;<br>
-            taze domates &amp; salatalık, zeytin ve çıtır patates kızartması ile birlikte servis edilir.
-          </div>
+        <div class="menu-item">
+          <span>Tost</span>
+          <span class="menu-price">100 ₺</span>
         </div>
       </div>
     </div>
