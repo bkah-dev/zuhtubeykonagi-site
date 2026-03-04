@@ -4,125 +4,308 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Zühtü Bey Konağı Menü</title>
+  <title>Avlu Menü</title>
+
+  <!-- Aynı font dili (Cormorant + Nunito) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#f6f1e8;
-      --paper:#fffaf2;
-      --ink:#2b2b2b;
-      --muted:#6b6b6b;
-      --line:#e7dece;
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      /* Ana siteyle uyumlu palet */
+      --color-bg: #F5F1EB;
+      --color-surface: #EDE6DB;
+      --color-text: #4A3F35;
+      --color-primary: #8B7355;
+      --color-secondary: #6B5B4F;
+
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(74, 63, 53, 0.12);
+      --shadow-soft: 0 10px 30px rgba(74, 63, 53, 0.10);
+      --line: rgba(74, 63, 53, 0.16);
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-serif, Georgia, "Times New Roman", serif;
-      color:var(--ink);
-      background: radial-gradient(1200px 600px at 30% 10%, #fff 0%, var(--bg) 55%) fixed;
+      background:
+        radial-gradient(1100px 520px at 20% 10%, rgba(139,115,85,0.10) 0%, transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(107,91,79,0.08) 0%, transparent 60%),
+        linear-gradient(180deg, #FFF 0%, var(--color-bg) 65%, var(--color-bg) 100%);
+      color: var(--color-text);
+      font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+    a{ color: inherit; text-decoration:none; }
+
+    .font-display{ font-family: 'Cormorant Garamond', serif; }
+
     .wrap{
-      max-width: 880px;
-      margin: 40px auto;
-      padding: 0 16px 64px;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 22px 16px 64px;
     }
-    .paper{
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 18px;
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(245, 241, 235, 0.86);
+      border-bottom: 1px solid rgba(74,63,53,0.10);
+    }
+    .topbar-inner{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .mark{
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      border: 1px solid rgba(74,63,53,0.12);
+      background: rgba(255,255,255,0.55);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+      color: var(--color-primary);
+    }
+    .brand-title{
+      font-size: 14px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(74,63,53,0.75);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .top-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      border: 1px solid rgba(74,63,53,0.16);
+      background: rgba(255,255,255,0.55);
+      color: rgba(74,63,53,0.82);
+      transition: all .25s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .btn.primary{
+      background: var(--color-primary);
+      color: #fff;
+      border-color: rgba(139,115,85,0.65);
+    }
+    .btn.primary:hover{ filter: brightness(1.02); }
+
+    /* Header card */
+    .hero{
+      margin-top: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(74,63,53,0.12);
+      background: rgba(237,230,219,0.65);
       box-shadow: var(--shadow);
       overflow:hidden;
+      position:relative;
     }
-    header{
-      padding: 28px 28px 18px;
-      border-bottom: 1px solid var(--line);
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0));
+        radial-gradient(600px 220px at 55% 0%, rgba(139,115,85,0.14), transparent 60%),
+        radial-gradient(520px 320px at 20% 100%, rgba(107,91,79,0.10), transparent 60%),
+        radial-gradient(520px 320px at 90% 100%, rgba(107,91,79,0.08), transparent 60%);
+      pointer-events:none;
     }
-    .title{
+    .hero-inner{
+      position:relative;
+      padding: 34px 22px 24px;
+      text-align:center;
+    }
+    .hero h1{
+      margin: 0 0 8px;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      color: var(--color-text);
+    }
+    .hero .sub{
+      margin: 0;
+      font-style: italic;
+      color: rgba(74,63,53,0.72);
+      font-size: 16px;
+    }
+    .decor{
+      margin: 18px auto 0;
+      width: 140px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      opacity: .85;
+    }
+
+    /* Poem */
+    .poem{
+      margin-top: 18px;
+      padding: 18px 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(74,63,53,0.12);
+      background: rgba(255,255,255,0.55);
+      box-shadow: var(--shadow-soft);
+      white-space: pre-line;
+      line-height: 1.85;
+      color: rgba(74,63,53,0.78);
+      font-size: 15px;
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 22px;
+      padding-top: 16px;
+    }
+    .section-title{
       display:flex;
       align-items:baseline;
       justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+      gap: 12px;
+      margin: 0 0 10px;
     }
-    h1{
+    .section-title h2{
       margin:0;
-      font-size: 28px;
-      letter-spacing:.2px;
-    }
-    .badge{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 12px;
-      color: var(--muted);
-      border:1px dashed var(--line);
-      border-radius: 999px;
-      padding: 6px 10px;
-      background: rgba(255,255,255,.6);
-    }
-    .subtitle{
-      margin:10px 0 0;
-      color:var(--muted);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 13px;
-      line-height:1.45;
-    }
-    main{ padding: 22px 28px 28px; }
-    .poem{
-      margin: 0;
-      padding: 16px 18px;
-      border-left: 3px solid var(--line);
-      background: rgba(255,255,255,.55);
-      border-radius: 12px;
-      line-height: 1.7;
-      color:#333;
-      font-size: 15px;
-      white-space: pre-line;
-    }
-    .section{
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-    h2{
-      margin:0 0 10px;
       font-size: 18px;
-      letter-spacing:.2px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(74,63,53,0.75);
+      font-weight: 600;
     }
-    .block{
-      background: rgba(255,255,255,.55);
-      border: 1px solid var(--line);
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(74,63,53,0.12);
+      background: rgba(237,230,219,0.55);
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+    }
+
+    .item{
+      padding: 12px 12px;
       border-radius: 14px;
-      padding: 14px 16px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(74,63,53,0.10);
+      margin-bottom: 10px;
     }
-    .block p{ margin:8px 0; line-height:1.6; }
-    ul{
-      margin: 8px 0 0 18px;
-      padding:0;
-      line-height: 1.75;
+    .item:last-child{ margin-bottom:0; }
+    .item .name{
+      font-weight: 700;
+      color: rgba(74,63,53,0.92);
     }
-    li{ margin: 4px 0; }
-    .note{
-      margin-top:14px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--muted);
+    .item .desc{
+      margin-top: 6px;
+      color: rgba(74,63,53,0.72);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .list{
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+    }
+    .list li{
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(74,63,53,0.10);
+      color: rgba(74,63,53,0.86);
+      line-height: 1.55;
+    }
+
+    /* Two columns on wide screens for drinks */
+    .grid2{
+      display:grid;
+      gap: 12px;
+    }
+    @media (min-width: 860px){
+      .grid2{ grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Footer note */
+    .foot{
+      margin-top: 18px;
+      color: rgba(74,63,53,0.62);
       font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-align:center;
+      font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    @media (max-width: 520px){
+      .hero h1{ font-size: 36px; }
+      .btn{ padding: 10px 12px; }
     }
   </style>
 </head>
-<body>
-  <div class="wrap">
-    <div class="paper">
-      <header>
-        <div class="title">
-          <h1>Menü</h1>
-          
-        </div>
-        
-      </header>
 
-      <main>
-        <div class="poem">
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <!-- minimal logo -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l8.5 5v10L12 22 3.5 17V7L12 2Z" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </div>
+        <div class="brand-title">Avlu Menü</div>
+      </div>
+
+      <div class="top-actions">
+        <a class="btn" href="/" title="Ana sayfaya dön">Ana Sayfa</a>
+        <a class="btn primary"
+           target="_blank" rel="noopener"
+           href="https://wa.me/905072550935?text=Merhaba%20Avlu%20Kafe!%20Siteniz%20%C3%BCzerinden%20ula%C5%9F%C4%B1yorum.%20%EF%B8%8F%0A%5B%20%5D%20Harika%20bir%20kahvalt%C4%B1%20i%C3%A7in%20rezervasyon%20yapt%C4%B1rmak%20istiyorum.%20%F0%9F%8D%B3%0A%5B%20%5D%20Organizasyon%20se%C3%A7enekleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20%E2%9C%A8%0AYard%C4%B1mc%C4%B1%20olabilir%20misiniz%3F">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-inner">
+        <h1 class="font-display">Avlu Menü</h1>
+        <p class="sub">Konağın sofrasına hoş geldiniz</p>
+        <div class="decor"></div>
+      </div>
+    </div>
+
+    <div class="poem">
 Bu konakta zaman acele etmez,
 usul usul yürür taşların arasında.
 Güneş avluya sessizce düşer,
@@ -143,118 +326,150 @@ bir lokma ekmekte sıcaklık saklıdır.
 Çünkü bazı yerlerde zaman akmaz…
 sessizce birikir,
 ve kalır.
+    </div>
+
+    <!-- Kahvaltı -->
+    <div class="section">
+      <div class="section-title"><h2>Kahvaltı</h2></div>
+      <div class="card">
+        <div class="item">
+          <div class="name">Serpme Kahvaltı</div>
         </div>
 
-        <section class="section">
-          <h2>Kahvaltı</h2>
-          <div class="block">
-            <p><strong>Serpme Kahvaltı</strong></p>
-            <p>Çay</p>
-            <p>Peynir Çeşitleri (Beyaz Peynir-Kaşar Peyniri-Köy Peyniri)</p>
-            <p>Zeytin Çeşitleri (Yeşil Zeytin-Siyah Zeytin- Kızarmış Zeytin)</p>
-            <p>Yeşillik Tabağı (Domates &amp; Salatalık)</p>
-            <p>Tereyağı</p>
-            <p>Bal</p>
-            <p>Sahanda Sucuklu Yumurta</p>
+        <ul class="list">
+          <li>Çay</li>
+          <li>Peynir Çeşitleri (Beyaz Peynir-Kaşar Peyniri-Köy Peyniri)</li>
+          <li>Zeytin Çeşitleri (Yeşil Zeytin-Siyah Zeytin- Kızarmış Zeytin)</li>
+          <li>Yeşillik Tabağı (Domates &amp; Salatalık)</li>
+          <li>Tereyağı</li>
+          <li>Bal</li>
+          <li>Sahanda Sucuklu Yumurta</li>
+        </ul>
 
-            <p><strong>Avlunun Anne Reçelleri</strong><br>
-              Meyvelerini dalından topladığımız, annemizin emeğiyle hazırlanan reçeller
-            </p>
+        <div style="height:10px"></div>
 
-            <p><strong>Anne Yapımı Kahvaltı Salçası</strong><br>
-              Geleneksel yöntemlerle hazırlanan, yoğun lezzetli ev yapımı salça
-            </p>
+        <div class="item">
+          <div class="name">Avlunun Anne Reçelleri</div>
+          <div class="desc">Meyvelerini dalından topladığımız, annemizin emeğiyle hazırlanan reçeller</div>
+        </div>
 
-            <p><strong>Avlu’ya Özel Kahvaltı Sosu</strong><br>
-              Kendi tarifimizle hazırlanan, kahvaltıya eşlik eden özel lezzet
-            </p>
+        <div class="item">
+          <div class="name">Anne Yapımı Kahvaltı Salçası</div>
+          <div class="desc">Geleneksel yöntemlerle hazırlanan, yoğun lezzetli ev yapımı salça</div>
+        </div>
 
-            <p>Peksimet</p>
-            <p>Pişi</p>
-            <p>Patates Kızartması</p>
-            <p>Her sabah taze mayalanan hamurdan, sıcacık ve yumuşacık</p>
-            <p>Ekşi Maya Ev Ekmeği</p>
+        <div class="item">
+          <div class="name">Avlu’ya Özel Kahvaltı Sosu</div>
+          <div class="desc">Kendi tarifimizle hazırlanan, kahvaltıya eşlik eden özel lezzet</div>
+        </div>
+
+        <ul class="list" style="margin-top:10px">
+          <li>Peksimet</li>
+          <li>Pişi</li>
+          <li>Patates Kızartması</li>
+          <li>Her sabah taze mayalanan hamurdan, sıcacık ve yumuşacık</li>
+          <li>Ekşi Maya Ev Ekmeği</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- İçecekler -->
+    <div class="section">
+      <div class="section-title"><h2>İçecekler</h2></div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="item">
+            <div class="name">Sıcak İçecekler</div>
           </div>
-        </section>
-
-        <section class="section">
-          <h2>Sıcak İçecekler</h2>
-          <div class="block">
-            <ul>
-              <li>Çay (Fincan / Bardak)</li>
-              <li>Bitki Çayları (Adaçayı, Ihlamur vb.)</li>
-              <li>
-                Türk Kahvesi<br>
+          <ul class="list">
+            <li>Çay (Fincan / Bardak)</li>
+            <li>Bitki Çayları (Adaçayı, Ihlamur vb.)</li>
+            <li>
+              Türk Kahvesi
+              <div class="desc" style="margin-top:6px">
                 Türk kahvesinin hatrı 40 yıl derler…<br>
                 Bizce Avlu’da içilenin hatrı biraz daha uzun. Ağır ağır pişen, köpüğü yerinde bir kahve…<br>
                 Sohbetin en güzel yerinde masaya gelir.
-              </li>
-              <li>Sütlü Kahve</li>
-              <li>Menengiç Kahvesi</li>
-              <li>Filtre Kahve</li>
-              <li>Salep</li>
-              <li>Sıcak Çikolata</li>
-            </ul>
-          </div>
-        </section>
+              </div>
+            </li>
+            <li>Sütlü Kahve</li>
+            <li>Menengiç Kahvesi</li>
+            <li>Filtre Kahve</li>
+            <li>Salep</li>
+            <li>Sıcak Çikolata</li>
+          </ul>
+        </div>
 
-        <section class="section">
-          <h2>Soğuk İçecekler</h2>
-          <div class="block">
-            <ul>
-              <li>
-                Ev Yapımı Limonata<br>
+        <div class="card">
+          <div class="item">
+            <div class="name">Soğuk İçecekler</div>
+          </div>
+          <ul class="list">
+            <li>
+              Ev Yapımı Limonata
+              <div class="desc" style="margin-top:6px">
                 Limonatamızın bir sırrı yok…<br>
                 Sadece gerçekten limondan yapıyoruz. Taze sıkılmış limonların ferahlığı, yazın sıcak günlerinde avlunun serinliğiyle buluşur.<br>
                 Bu yüzden çoğu misafirimiz ilk yudumdan sonra aynı şeyi söyler:<br>
                 “Bir tane daha alalım.”
-              </li>
-              <li>Soğuk Kahve</li>
-              <li>Ice Tea</li>
-              <li>Kola / Fanta / Gazoz</li>
-              <li>Sade Soda</li>
-              <li>Meyveli Soda</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2>Avlu İkramları</h2>
-          <div class="block">
-            <p>(Ev yapımı &amp; günlük hazırlanır)</p>
-            <ul>
-              <li>Çilekli Tart</li>
-              <li>Brownie</li>
-              <li>Dereotlu Poğaça</li>
-              <li>Anne Kurabiyesi</li>
-            </ul>
-            <p><strong>Bugün Anne elinden:</strong><br>
-              Güne göre değişen kek, kurabiye ve diğer çeşitlerimizi sorabilirsiniz.
-            </p>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2>TOST ÇEŞİTLERİ</h2>
-          <div class="block">
-            <p><strong>Kaşarlı Tost</strong><br>
-              Eritilmiş kaşarın sıcak ekmekle buluştuğu sade ve lezzetli bir klasik
-            </p>
-
-            <p><strong>Karışık Tost</strong><br>
-              Kaşar peyniri ve lezzetli içeriğiyle doyurucu bir alternatif
-            </p>
-
-            <p><strong>Tost Menü</strong><br>
-              Sıcacık tostun yanında;<br>
-              taze domates &amp; salatalık, zeytin ve çıtır patates kızartması ile birlikte servis edilir.
-            </p>
-          </div>
-
-          
-        </section>
-      </main>
+              </div>
+            </li>
+            <li>Soğuk Kahve</li>
+            <li>Ice Tea</li>
+            <li>Kola / Fanta / Gazoz</li>
+            <li>Sade Soda</li>
+            <li>Meyveli Soda</li>
+          </ul>
+        </div>
+      </div>
     </div>
+
+    <!-- Avlu İkramları -->
+    <div class="section">
+      <div class="section-title"><h2>Avlu İkramları</h2></div>
+      <div class="card">
+        <div class="item">
+          <div class="name">(Ev yapımı &amp; günlük hazırlanır)</div>
+        </div>
+        <ul class="list">
+          <li>Çilekli Tart</li>
+          <li>Brownie</li>
+          <li>Dereotlu Poğaça</li>
+          <li>Anne Kurabiyesi</li>
+          <li>
+            Bugün Anne elinden:
+            <div class="desc" style="margin-top:6px">Güne göre değişen kek, kurabiye ve diğer çeşitlerimizi sorabilirsiniz.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tost -->
+    <div class="section">
+      <div class="section-title"><h2>Tost Çeşitleri</h2></div>
+      <div class="card">
+        <div class="item">
+          <div class="name">Kaşarlı Tost</div>
+          <div class="desc">Eritilmiş kaşarın sıcak ekmekle buluştuğu sade ve lezzetli bir klasik</div>
+        </div>
+
+        <div class="item">
+          <div class="name">Karışık Tost</div>
+          <div class="desc">Kaşar peyniri ve lezzetli içeriğiyle doyurucu bir alternatif</div>
+        </div>
+
+        <div class="item">
+          <div class="name">Tost Menü</div>
+          <div class="desc">
+            Sıcacık tostun yanında;<br>
+            taze domates &amp; salatalık, zeytin ve çıtır patates kızartması ile birlikte servis edilir.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">Avlu Zühtübey Konağı</div>
   </div>
 </body>
 </html>
