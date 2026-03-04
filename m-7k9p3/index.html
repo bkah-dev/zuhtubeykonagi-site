@@ -12,6 +12,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+          .breakfast-bg{
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .breakfast-bg::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background-image:url("/kahvalti.jpg");
+        background-size:cover;
+        background-position:center;
+        opacity:0.25;
+      }
+      
+      .breakfast-bg > *{
+        position:relative;
+        z-index:2;
+      }
     :root{
       /* Ana siteyle uyumlu palet */
       --color-bg: #F5F1EB;
@@ -329,10 +348,10 @@ ve kalır.
     </div>
 
     <!-- Kahvaltı -->
-    <div class="section">
+      <div class="section">
       <div class="section-title"><h2>Kahvaltı</h2></div>
-
-      <div class="card">
+    
+      <div class="card breakfast-bg">
         <div class="menu-item">
           <span><strong>Kahvaltı (Kişi Başı)</strong></span>
           <span class="menu-price">450 ₺</span>
