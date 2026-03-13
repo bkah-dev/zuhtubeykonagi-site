@@ -4,49 +4,48 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Avlu MenÃ¼</title>
+  <title>Avlu Menü</title>
 
-  <!-- AynÄ± font dili (Cormorant + Nunito) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-          .breakfast-bg{
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .breakfast-bg::before{
-        content:"";
-        position:absolute;
-        inset:0;
-        background-image:url("../kahvalti.jpg");
-        background-size:cover;
-        background-position:center;
-        opacity:0.25;
-      }
-      
-      .breakfast-bg > *{
-        position:relative;
-        z-index:2;
-      }
     :root{
-      /* Ana siteyle uyumlu palet */
       --color-bg: #F5F1EB;
       --color-surface: #EDE6DB;
       --color-text: #4A3F35;
       --color-primary: #8B7355;
       --color-secondary: #6B5B4F;
-
       --radius: 18px;
       --shadow: 0 18px 50px rgba(74, 63, 53, 0.12);
       --shadow-soft: 0 10px 30px rgba(74, 63, 53, 0.10);
       --line: rgba(74, 63, 53, 0.16);
     }
 
+    .breakfast-bg{
+      position: relative;
+      overflow: hidden;
+    }
+
+    .breakfast-bg::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:url("../kahvalti.jpg");
+      background-size:cover;
+      background-position:center;
+      opacity:0.18;
+    }
+
+    .breakfast-bg > *{
+      position:relative;
+      z-index:2;
+    }
+
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       background:
@@ -56,9 +55,15 @@
       color: var(--color-text);
       font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    a{ color: inherit; text-decoration:none; }
 
-    .font-display{ font-family: 'Cormorant Garamond', serif; }
+    a{
+      color: inherit;
+      text-decoration:none;
+    }
+
+    .font-display{
+      font-family: 'Cormorant Garamond', serif;
+    }
 
     .wrap{
       max-width: 920px;
@@ -66,7 +71,6 @@
       padding: 22px 16px 64px;
     }
 
-    /* Top bar */
     .topbar{
       position: sticky;
       top: 0;
@@ -75,6 +79,7 @@
       background: rgba(245, 241, 235, 0.86);
       border-bottom: 1px solid rgba(74,63,53,0.10);
     }
+
     .topbar-inner{
       max-width: 920px;
       margin: 0 auto;
@@ -84,12 +89,14 @@
       justify-content:space-between;
       gap: 12px;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap: 10px;
       min-width: 0;
     }
+
     .mark{
       width: 36px;
       height: 36px;
@@ -100,7 +107,11 @@
       place-items:center;
       flex: 0 0 auto;
       color: var(--color-primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
     }
+
     .brand-title{
       font-size: 14px;
       letter-spacing: .28em;
@@ -110,12 +121,14 @@
       overflow:hidden;
       text-overflow: ellipsis;
     }
+
     .top-actions{
       display:flex;
       gap: 10px;
       flex-wrap: wrap;
       justify-content:flex-end;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -132,15 +145,18 @@
       transition: all .25s ease;
       user-select:none;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+
     .btn.primary{
       background: var(--color-primary);
       color: #fff;
       border-color: rgba(139,115,85,0.65);
     }
-    .btn.primary:hover{ filter: brightness(1.02); }
 
-    /* Header card */
     .hero{
       margin-top: 18px;
       border-radius: 22px;
@@ -150,6 +166,7 @@
       overflow:hidden;
       position:relative;
     }
+
     .hero::before{
       content:"";
       position:absolute;
@@ -160,11 +177,13 @@
         radial-gradient(520px 320px at 90% 100%, rgba(107,91,79,0.08), transparent 60%);
       pointer-events:none;
     }
+
     .hero-inner{
       position:relative;
       padding: 34px 22px 24px;
       text-align:center;
     }
+
     .hero h1{
       margin: 0 0 8px;
       font-size: 44px;
@@ -172,12 +191,14 @@
       letter-spacing: .3px;
       color: var(--color-text);
     }
+
     .hero .sub{
       margin: 0;
       font-style: italic;
       color: rgba(74,63,53,0.72);
       font-size: 16px;
     }
+
     .decor{
       margin: 18px auto 0;
       width: 140px;
@@ -186,7 +207,6 @@
       opacity: .85;
     }
 
-    /* Poem */
     .poem{
       padding: 18px 18px;
       border-radius: var(--radius);
@@ -204,11 +224,11 @@
       letter-spacing: 0.3px;
     }
 
-    /* Sections */
     .section{
       margin-top: 22px;
       padding-top: 16px;
     }
+
     .section-title{
       display:flex;
       align-items:baseline;
@@ -216,6 +236,7 @@
       gap: 12px;
       margin: 0 0 10px;
     }
+
     .section-title h2{
       margin:0;
       font-size: 18px;
@@ -224,6 +245,7 @@
       color: rgba(74,63,53,0.75);
       font-weight: 600;
     }
+
     .card{
       border-radius: var(--radius);
       border: 1px solid rgba(74,63,53,0.12);
@@ -232,7 +254,6 @@
       padding: 16px;
     }
 
-    /* fiyat satÄ±rÄ± */
     .menu-item{
       display:flex;
       justify-content:space-between;
@@ -244,7 +265,10 @@
       border:1px solid rgba(74,63,53,0.10);
       margin-bottom:8px;
     }
-    .menu-item:last-child{ margin-bottom:0; }
+
+    .menu-item:last-child{
+      margin-bottom:0;
+    }
 
     .menu-price{
       font-weight:700;
@@ -263,16 +287,6 @@
       font-size: 14px;
     }
 
-    /* Two columns on wide screens for drinks */
-    .grid2{
-      display:grid;
-      gap: 12px;
-    }
-    @media (min-width: 860px){
-      .grid2{ grid-template-columns: 1fr 1fr; }
-    }
-
-    /* Footer note */
     .foot{
       margin-top: 18px;
       color: rgba(74,63,53,0.62);
@@ -286,29 +300,27 @@
     @media (max-width: 520px){
       .hero h1{ font-size: 36px; }
       .btn{ padding: 10px 12px; }
+      .menu-item{ align-items:flex-start; }
     }
   </style>
 </head>
 
 <body>
-
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <div class="mark" aria-hidden="true">
-          <!-- minimal logo -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2l8.5 5v10L12 22 3.5 17V7L12 2Z" stroke="currentColor" stroke-width="1.6"/>
-          </svg>
-        </div>
-        <div class="brand-title">Avlu MenÃ¼</div>
+        <div class="mark" aria-hidden="true">AV</div>
+        <div class="brand-title">Avlu Menü</div>
       </div>
 
       <div class="top-actions">
-        <a class="btn" href="../index.html" title="Ana sayfaya dÃ¶n">Ana Sayfa</a>
-        <a class="btn primary"
-           target="_blank" rel="noopener"
-           href="https://wa.me/905072550935?text=Merhaba%20Avlu%20Kafe!%20Siteniz%20%C3%BCzerinden%20ula%C5%9F%C4%B1yorum.%20%EF%B8%8F%0A%5B%20%5D%20Harika%20bir%20kahvalt%C4%B1%20i%C3%A7in%20rezervasyon%20yapt%C4%B1rmak%20istiyorum.%20%F0%9F%8D%B3%0A%5B%20%5D%20Organizasyon%20se%C3%A7enekleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20%E2%9C%A8%0AYard%C4%B1mc%C4%B1%20olabilir%20misiniz%3F">
+        <a class="btn" href="../index.html" title="Ana sayfaya dön">Ana Sayfa</a>
+        <a
+          class="btn primary"
+          target="_blank"
+          rel="noopener"
+          href="https://wa.me/905072550935?text=Merhaba%20Avlu%20Kafe!%20Siteniz%20%C3%BCzerinden%20ula%C5%9F%C4%B1yorum.%0ARezervasyon%20ve%20organizasyon%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+        >
           WhatsApp
         </a>
       </div>
@@ -318,235 +330,230 @@
   <div class="wrap">
     <div class="hero">
       <div class="hero-inner">
-        <h1 class="font-display">Avlu MenÃ¼</h1>
-        <p class="sub">KonaÄŸÄ±n sofrasÄ±na hoÅŸ geldiniz</p>
+        <h1 class="font-display">Avlu Menü</h1>
+        <p class="sub">Konağın sofrasına hoş geldiniz</p>
         <div class="decor"></div>
       </div>
     </div>
 
     <div class="poem">
 Bu konakta zaman acele etmez,
-usul usul yÃ¼rÃ¼r taÅŸlarÄ±n arasÄ±nda.
-GÃ¼neÅŸ avluya sessizce dÃ¼ÅŸer,
-gÃ¶lgeyle Ä±ÅŸÄ±k birbirine karÄ±ÅŸÄ±r.
-BakÄ±r cezvede kahve aÄŸÄ±r aÄŸÄ±r piÅŸer,
-kokusuyla zamanÄ± durdurur.
-Sofra bir telaÅŸla kurulmaz burada,
-her ÅŸey yerini bilerek gelir.
-Bir tabak, bir fincan, bir bakÄ±ÅŸâ€¦
-hepsi bir sohbetin eÅŸiÄŸinde bekler.
-RÃ¼zgÃ¢r dokunur eski duvarlara,
-geÃ§miÅŸten bir hikÃ¢ye taÅŸÄ±r gibi.
-Bir Ã§ocuk kahkahasÄ± dolaÅŸÄ±r avluda,
-belki yarÄ±m kalmÄ±ÅŸ bir sevdanÄ±n iziâ€¦
-Biz burada yalnÄ±zca servis yapmayÄ±z;
-bir fincan kahvede hatÄ±ralar demlenir,
-bir lokma ekmekte sÄ±caklÄ±k saklÄ±dÄ±r.
-Ã‡Ã¼nkÃ¼ bazÄ± yerlerde zaman akmazâ€¦
+usul usul yürür taşların arasında.
+Güneş avluya sessizce düşer,
+gölgeyle ışık birbirine karışır.
+Bakır cezvede kahve ağır ağır pişer,
+kokusuyla zamanı durdurur.
+Sofra bir telaşla kurulmaz burada,
+her şey yerini bilerek gelir.
+Bir tabak, bir fincan, bir bakış...
+hepsi bir sohbetin eşiğinde bekler.
+Rüzgâr dokunur eski duvarlara,
+geçmişten bir hikâye taşır gibi.
+Bir çocuk kahkahası dolaşır avluda,
+belki yarım kalmış bir sevdanın izi...
+Biz burada yalnızca servis yapmayız;
+bir fincan kahvede hatıralar demlenir,
+bir lokma ekmekte sıcaklık saklıdır.
+Çünkü bazı yerlerde zaman akmaz...
 sessizce birikir,
-ve kalÄ±r.
+ve kalır.
     </div>
 
-    <!-- KahvaltÄ± -->
-      <div class="section">
-      <div class="section-title"><h2>KahvaltÄ±</h2></div>
-    
+    <div class="section">
+      <div class="section-title"><h2>Kahvaltı</h2></div>
+
       <div class="card breakfast-bg">
         <div class="menu-item">
-          <span><strong>KahvaltÄ± (KiÅŸi BaÅŸÄ±)</strong></span>
-          <span class="menu-price">450 â‚º</span>
+          <span><strong>Kahvaltı (Kişi Başı)</strong></span>
+          <span class="menu-price">450 ₺</span>
         </div>
 
         <div class="menu-sub">
-          Ã‡ay<br>
-          Peynir Ã‡eÅŸitleri (Beyaz Peynir â€“ KaÅŸar Peyniri â€“ KÃ¶y Peyniri)<br>
-          Zeytin Ã‡eÅŸitleri (YeÅŸil Zeytin â€“ Siyah Zeytin â€“ KÄ±zarmÄ±ÅŸ Zeytin)<br>
-          YeÅŸillik TabaÄŸÄ± (Domates &amp; SalatalÄ±k)<br>
-          TereyaÄŸÄ±<br>
+          Çay<br>
+          Peynir Çeşitleri (Beyaz Peynir - Kaşar Peyniri - Köy Peyniri)<br>
+          Zeytin Çeşitleri (Yeşil Zeytin - Siyah Zeytin - Kızarmış Zeytin)<br>
+          Yeşillik Tabağı (Domates &amp; Salatalık)<br>
+          Tereyağı<br>
           Bal<br>
           Sahanda Sucuklu Yumurta<br><br>
 
-          <strong>Avlunun Anne ReÃ§elleri</strong><br>
-          Meyvelerini dalÄ±ndan topladÄ±ÄŸÄ±mÄ±z, annemizin emeÄŸiyle hazÄ±rlanan reÃ§eller<br><br>
+          <strong>Avlu'nun Anne Reçelleri</strong><br>
+          Meyvelerini dalından topladığımız, annemizin emeğiyle hazırlanan reçeller<br><br>
 
-          <strong>Anne YapÄ±mÄ± KahvaltÄ± SalÃ§asÄ±</strong><br>
-          Geleneksel yÃ¶ntemlerle hazÄ±rlanan, yoÄŸun lezzetli ev yapÄ±mÄ± salÃ§a<br><br>
+          <strong>Anne Yapımı Kahvaltı Salçası</strong><br>
+          Geleneksel yöntemlerle hazırlanan, yoğun lezzetli ev yapımı salça<br><br>
 
-          <strong>Avluâ€™ya Ã–zel KahvaltÄ± Sosu</strong><br>
-          Kendi tarifimizle hazÄ±rlanan, kahvaltÄ±ya eÅŸlik eden Ã¶zel lezzet<br><br>
+          <strong>Avlu'ya Özel Kahvaltı Sosu</strong><br>
+          Kendi tarifimizle hazırlanan, kahvaltıya eşlik eden özel lezzet<br><br>
 
-          PiÅŸi (Her sabah taze mayalanan hamurdan, sÄ±cacÄ±k ve yumuÅŸacÄ±k)<br>
+          Pişi (Her sabah taze mayalanan hamurdan, sıcacık ve yumuşacık)<br>
           Peksimet<br>
-          Patates KÄ±zartmasÄ±<br>
-          EkÅŸi Maya Ev EkmeÄŸi
+          Patates Kızartması<br>
+          Ekşi Maya Ev Ekmeği
         </div>
       </div>
     </div>
 
-    <!-- KahvaltÄ± EkstralarÄ± -->
     <div class="section">
-      <div class="section-title"><h2>KahvaltÄ± EkstralarÄ±</h2></div>
+      <div class="section-title"><h2>Kahvaltı Ekstraları</h2></div>
       <div class="card">
         <div class="menu-item">
-          <span>Patates KÄ±zartmasÄ±</span>
-          <span class="menu-price">150 â‚º</span>
+          <span>Patates Kızartması</span>
+          <span class="menu-price">150 ₺</span>
         </div>
         <div class="menu-item">
-          <span>Sigara BÃ¶reÄŸi (Porsiyon â€“ 4 adet)</span>
-          <span class="menu-price">120 â‚º</span>
+          <span>Sigara Böreği (Porsiyon - 4 adet)</span>
+          <span class="menu-price">120 ₺</span>
         </div>
         <div class="menu-item">
-          <span>PaÃ§anga BÃ¶reÄŸi (Porsiyon â€“ 2 adet)</span>
-          <span class="menu-price">200 â‚º</span>
+          <span>Paçanga Böreği (Porsiyon - 2 adet)</span>
+          <span class="menu-price">200 ₺</span>
         </div>
         <div class="menu-item">
           <span>Sahanda Sucuklu Yumurta</span>
-          <span class="menu-price">150 â‚º</span>
+          <span class="menu-price">150 ₺</span>
         </div>
         <div class="menu-item">
-          <span>KahvaltÄ± Sosu</span>
-          <span class="menu-price">150 â‚º</span>
+          <span>Kahvaltı Sosu</span>
+          <span class="menu-price">150 ₺</span>
         </div>
         <div class="menu-item">
-          <span>PiÅŸi (Porsiyon â€“ 2 adet)</span>
-          <span class="menu-price">75 â‚º</span>
+          <span>Pişi (Porsiyon - 2 adet)</span>
+          <span class="menu-price">75 ₺</span>
         </div>
       </div>
     </div>
 
-    <!-- SÄ±cak Ä°Ã§ecekler -->
     <div class="section">
-      <div class="section-title"><h2>SÄ±cak Ä°Ã§ecekler</h2></div>
+      <div class="section-title"><h2>Sıcak İçecekler</h2></div>
       <div class="card">
         <div class="menu-item">
-          <span>Ã‡ay</span>
-          <span class="menu-price">25 â‚º</span>
+          <span>Çay</span>
+          <span class="menu-price">25 ₺</span>
         </div>
         <div class="menu-item">
-          <span>Bitki Ã‡aylarÄ±</span>
-          <span class="menu-price">100 â‚º</span>
+          <span>Bitki Çayları</span>
+          <span class="menu-price">100 ₺</span>
         </div>
         <div class="menu-item">
-          <span>TÃ¼rk Kahvesi</span>
-          <span class="menu-price">75 â‚º</span>
+          <span>Türk Kahvesi</span>
+          <span class="menu-price">75 ₺</span>
         </div>
         <div class="menu-item">
-          <span>SÃ¼tlÃ¼ TÃ¼rk Kahvesi</span>
-          <span class="menu-price">100 â‚º</span>
+          <span>Sütlü Türk Kahvesi</span>
+          <span class="menu-price">100 ₺</span>
         </div>
         <div class="menu-item">
-          <span>MenengiÃ§ Kahvesi</span>
-          <span class="menu-price">100 â‚º</span>
+          <span>Menengiç Kahvesi</span>
+          <span class="menu-price">100 ₺</span>
         </div>
         <div class="menu-item">
           <span>Filtre Kahve</span>
-          <span class="menu-price">120 â‚º</span>
+          <span class="menu-price">120 ₺</span>
         </div>
         <div class="menu-item">
           <span>Salep</span>
-          <span class="menu-price">150 â‚º</span>
+          <span class="menu-price">150 ₺</span>
         </div>
         <div class="menu-item">
-          <span>SÄ±cak Ã‡ikolata</span>
-          <span class="menu-price">150 â‚º</span>
+          <span>Sıcak Çikolata</span>
+          <span class="menu-price">150 ₺</span>
         </div>
       </div>
     </div>
 
-    <!-- SoÄŸuk Ä°Ã§ecekler -->
     <div class="section">
-      <div class="section-title"><h2>SoÄŸuk Ä°Ã§ecekler</h2></div>
+      <div class="section-title"><h2>Soğuk İçecekler</h2></div>
       <div class="card">
         <div class="menu-item">
-          <span>Ev YapÄ±mÄ± Limonata</span>
-          <span class="menu-price">150 â‚º</span>
+          <span>Ev Yapımı Limonata</span>
+          <span class="menu-price">150 ₺</span>
         </div>
+
         <div class="menu-sub" style="margin-top:0;">
-          LimonatamÄ±zÄ±n bir sÄ±rrÄ± yokâ€¦<br>
-          Sadece gerÃ§ekten limondan yapÄ±yoruz. Taze sÄ±kÄ±lmÄ±ÅŸ limonlarÄ±n ferahlÄ±ÄŸÄ±, yazÄ±n sÄ±cak gÃ¼nlerinde avlunun serinliÄŸiyle buluÅŸur.<br>
-          Bu yÃ¼zden Ã§oÄŸu misafirimiz ilk yudumdan sonra aynÄ± ÅŸeyi sÃ¶yler:<br>
-          â€œBir tane daha alalÄ±m.â€
+          Limonatamızın bir sırrı yok...<br>
+          Sadece gerçekten limondan yapıyoruz. Taze sıkılmış limonların ferahlığı, yazın sıcak günlerinde avlunun serinliğiyle buluşur.<br>
+          Bu yüzden çoğu misafirimiz ilk yudumdan sonra aynı şeyi söyler:<br>
+          "Bir tane daha alalım."
         </div>
 
         <div class="menu-item">
-          <span>SoÄŸuk Kahve (SÃ¼tlÃ¼)</span>
-          <span class="menu-price">150 â‚º</span>
+          <span>Soğuk Kahve (Sütlü)</span>
+          <span class="menu-price">150 ₺</span>
         </div>
         <div class="menu-item">
           <span>Su</span>
-          <span class="menu-price">20 â‚º</span>
+          <span class="menu-price">20 ₺</span>
         </div>
         <div class="menu-item">
           <span>Ice Tea</span>
-          <span class="menu-price">80 â‚º</span>
+          <span class="menu-price">80 ₺</span>
         </div>
         <div class="menu-item">
           <span>Kola / Fanta / Gazoz</span>
-          <span class="menu-price">80 â‚º</span>
+          <span class="menu-price">80 ₺</span>
         </div>
         <div class="menu-item">
           <span>Sade Soda</span>
-          <span class="menu-price">40 â‚º</span>
+          <span class="menu-price">40 ₺</span>
         </div>
         <div class="menu-item">
           <span>Meyveli Soda</span>
-          <span class="menu-price">50 â‚º</span>
+          <span class="menu-price">50 ₺</span>
         </div>
         <div class="menu-item">
           <span>Ayran</span>
-          <span class="menu-price">40 â‚º</span>
+          <span class="menu-price">40 ₺</span>
         </div>
         <div class="menu-item">
           <span>Churchill</span>
-          <span class="menu-price">60 â‚º</span>
+          <span class="menu-price">60 ₺</span>
         </div>
       </div>
     </div>
 
-    <!-- Avlu Ä°kramlarÄ± -->
     <div class="section">
-      <div class="section-title"><h2>Avlu Ä°kramlarÄ±</h2></div>
+      <div class="section-title"><h2>Avlu İkramları</h2></div>
       <div class="card">
         <div class="menu-item">
           <span>Brownie</span>
-          <span class="menu-price">150 â‚º</span>
+          <span class="menu-price">150 ₺</span>
         </div>
         <div class="menu-item">
-          <span>Ã‡ilekli Turta</span>
-          <span class="menu-price">150 â‚º</span>
+          <span>Çilekli Turta</span>
+          <span class="menu-price">150 ₺</span>
         </div>
         <div class="menu-item">
           <span>Anne Kurabiyesi</span>
-          <span class="menu-price">50 â‚º</span>
+          <span class="menu-price">50 ₺</span>
         </div>
         <div class="menu-item">
-          <span>Dereotlu PoÄŸaÃ§a</span>
-          <span class="menu-price">25 â‚º</span>
+          <span>Dereotlu Poğaça</span>
+          <span class="menu-price">25 ₺</span>
         </div>
+
         <div class="menu-sub" style="margin-top:12px">
-        <strong>GÃ¼nlÃ¼k Ã‡Ä±kanlar</strong><br>
-        GÃ¼ne gÃ¶re deÄŸiÅŸen kek, kurabiye ve diÄŸer Ã§eÅŸitlerimizi sorabilirsiniz.
+          <strong>Günlük Çıkanlar</strong><br>
+          Güne göre değişen kek, kurabiye ve diğer çeşitlerimizi sorabilirsiniz.
         </div>
-        </div>
+      </div>
     </div>
 
-    <!-- Tost -->
     <div class="section">
       <div class="section-title"><h2>Tost</h2></div>
       <div class="card">
         <div class="menu-item">
-          <span>Tost MenÃ¼</span>
-          <span class="menu-price">180 â‚º</span>
+          <span>Tost Menü</span>
+          <span class="menu-price">180 ₺</span>
         </div>
         <div class="menu-item">
           <span>Tost</span>
-          <span class="menu-price">100 â‚º</span>
+          <span class="menu-price">100 ₺</span>
         </div>
       </div>
     </div>
 
-    <div class="foot">Avlu ZÃ¼htÃ¼bey KonaÄŸÄ±</div>
+    <div class="foot">Avlu Zühtübey Konağı</div>
   </div>
 </body>
 </html>
-
