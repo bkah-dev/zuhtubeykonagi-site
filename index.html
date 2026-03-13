@@ -467,61 +467,83 @@
     </div>
   </footer>
 
-  <script>
-    const track = document.getElementById('carouselTrack');
-    const slides = Array.from(track.children);
-    const dotsWrap = document.getElementById('carouselDots');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    let currentIndex = 0;
-    let autoPlay;
+<script>
+  const track = document.getElementById('carouselTrack');
+  const slides = Array.from(track.children);
+  const dotsWrap = document.getElementById('carouselDots');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const carouselShell = document.querySelector('.carousel-shell');
 
-    slides.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', 'Fotoğraf ' + (index + 1));
-      dot.addEventListener('click', () => goToSlide(index));
-      dotsWrap.appendChild(dot);
+  let currentIndex = 0;
+  let autoPlay;
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 50;
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', 'Fotoğraf ' + (index + 1));
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsWrap.appendChild(dot);
+  });
+
+  const dots = Array.from(dotsWrap.children);
+
+  function updateCarousel() {
+    track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
     });
+  }
 
-    const dots = Array.from(dotsWrap.children);
-
-    function updateCarousel() {
-      track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
-      });
-    }
-
-    function goToSlide(index) {
-      currentIndex = (index + slides.length) % slides.length;
-      updateCarousel();
-      resetAutoplay();
-    }
-
-    function nextSlide() {
-      goToSlide(currentIndex + 1);
-    }
-
-    function prevSlide() {
-      goToSlide(currentIndex - 1);
-    }
-
-    function startAutoplay() {
-      autoPlay = setInterval(nextSlide, 3500);
-    }
-
-    function resetAutoplay() {
-      clearInterval(autoPlay);
-      startAutoplay();
-    }
-
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-
+  function goToSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
     updateCarousel();
+    resetAutoplay();
+  }
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+  function startAutoplay() {
+    autoPlay = setInterval(nextSlide, 3500);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoPlay);
     startAutoplay();
-  </script>
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  carouselShell.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  carouselShell.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    const diff = touchEndX - touchStartX;
+
+    if (Math.abs(diff) < swipeThreshold) return;
+
+    if (diff < 0) {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
+  }, { passive: true });
+
+  updateCarousel();
+  startAutoplay();
+</script>
 </body>
 </html>
