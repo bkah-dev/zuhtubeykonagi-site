@@ -11,12 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-		--color-bg: #f6f1e8;
-		--color-surface: #f1eadf;
-      --color-text: #4A3F35;
-      --color-primary: #8B7355;
-      --color-secondary: #6B5B4F;
+	:root{
+	  --color-bg: #f6f1e8;
+	  --color-surface: #efe7db;
+	  --color-text: #2b241c;
+	  --color-primary: #7a5e38;
+	  --color-secondary: #6e5b46;
       --radius: 18px;
       --shadow: 0 18px 50px rgba(74, 63, 53, 0.12);
       --shadow-soft: 0 10px 30px rgba(74, 63, 53, 0.10);
@@ -46,15 +46,13 @@
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
 
-    body{
-      margin:0;
-      background:
-        radial-gradient(1100px 520px at 20% 10%, rgba(139,115,85,0.10) 0%, transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(107,91,79,0.08) 0%, transparent 60%),
-        linear-gradient(180deg, #FFF 0%, var(--color-bg) 65%, var(--color-bg) 100%);
-      color: var(--color-text);
-      font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
+	body{
+	  margin:0;
+	  background: var(--color-bg);
+	  color: var(--color-text);
+	  font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	}
+
 
     a{
       color: inherit;
@@ -71,14 +69,14 @@
       padding: 22px 16px 64px;
     }
 
-    .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(246,241,232,0.90);
-      border-bottom: 1px solid rgba(74,63,53,0.10);
-    }
+	.topbar{
+	  position: sticky;
+	  top: 0;
+	  z-index: 10;
+	  backdrop-filter: blur(10px);
+	  background: rgba(246, 241, 232, 0.94);
+	  border-bottom: 1px solid rgba(120,94,56,0.14);
+	}
 
     .topbar-inner{
       max-width: 920px;
@@ -157,26 +155,26 @@
       border-color: rgba(139,115,85,0.65);
     }
 
-    .hero{
-      margin-top: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(74,63,53,0.12);
-      background: rgba(237,230,219,0.65);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(600px 220px at 55% 0%, rgba(139,115,85,0.14), transparent 60%),
-        radial-gradient(520px 320px at 20% 100%, rgba(107,91,79,0.10), transparent 60%),
-        radial-gradient(520px 320px at 90% 100%, rgba(107,91,79,0.08), transparent 60%);
-      pointer-events:none;
-    }
+	.hero{
+	  margin-top: 18px;
+	  border-radius: 22px;
+	  border: 1px solid rgba(120,94,56,0.14);
+	  background: rgba(239,231,219,0.88);
+	  box-shadow: var(--shadow);
+	  overflow:hidden;
+	  position:relative;
+	}
+	
+	.hero::before{
+	  content:"";
+	  position:absolute;
+	  inset:0;
+	  background:
+		linear-gradient(rgba(246,241,232,0.82), rgba(246,241,232,0.82)),
+		url("../logo-mark.png") center/180px no-repeat;
+	  opacity:0.42;
+	  pointer-events:none;
+	}
 
     .hero-inner{
       position:relative;
@@ -208,10 +206,10 @@
     }
 
     .poem{
-      padding: 18px 18px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(74,63,53,0.12);
-      background: rgba(255,255,255,0.55);
+	  padding: 18px 18px;
+	  border-radius: var(--radius);
+	  border: 1px solid rgba(120,94,56,0.14);
+	  background: rgba(244,238,230,0.84);
       box-shadow: var(--shadow-soft);
       white-space: pre-line;
       line-height: 1.85;
@@ -246,25 +244,25 @@
       font-weight: 600;
     }
 
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid rgba(74,63,53,0.12);
-      background: rgba(237,230,219,0.55);
-      box-shadow: var(--shadow-soft);
-      padding: 16px;
-    }
+	.card{
+	  border-radius: var(--radius);
+	  border: 1px solid rgba(120,94,56,0.14);
+	  background: rgba(246,241,232,0.72);
+	  box-shadow: var(--shadow-soft);
+	  padding: 16px;
+	}
 
-    .menu-item{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 12px;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(255,255,255,0.55);
-      border:1px solid rgba(74,63,53,0.10);
-      margin-bottom:8px;
-    }
+	.menu-item{
+	  display:flex;
+	  justify-content:space-between;
+	  align-items:center;
+	  gap: 12px;
+	  padding:10px 12px;
+	  border-radius:14px;
+	  background:rgba(248,243,236,0.82);
+	  border:1px solid rgba(120,94,56,0.12);
+	  margin-bottom:8px;
+	}
 
     .menu-item:last-child{
       margin-bottom:0;
@@ -276,16 +274,16 @@
       white-space: nowrap;
     }
 
-    .menu-sub{
-      margin: 6px 0 12px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,248,240,0.36);
-      border: 1px solid rgba(74,63,53,0.10);
-      color: rgba(74,63,53,0.74);
-      line-height: 1.65;
-      font-size: 14px;
-    }
+	.menu-sub{
+	  margin: 6px 0 12px;
+	  padding: 10px 12px;
+	  border-radius: 14px;
+	  background: rgba(244,238,230,0.88);
+	  border: 1px solid rgba(120,94,56,0.12);
+	  color: rgba(43,36,28,0.78);
+	  line-height: 1.65;
+	  font-size: 14px;
+	}
 
     .foot{
       margin-top: 18px;
@@ -309,7 +307,7 @@
   <div class="topbar">
     <div class="topbar-inner">
 	<div class="brand">
-	  <img src="../logo-mark.png" alt="Avlu Zühtübey Konağı logosu" style="width:56px;height:56px;object-fit:contain;">
+	  <img src="../logo-mark.png" alt="Avlu Zühtübey Konağı logosu" style="width:84px;height:84px;object-fit:contain;">
 	  <div class="brand-title">Avlu Menü</div>
 	</div>
       <div class="top-actions">
