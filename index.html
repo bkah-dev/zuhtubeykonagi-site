@@ -1,133 +1,183 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index,follow" />
-  <title>Avlu Zühtübey Konağı</title>
-
-  <!-- Tailwind CDN (mevcut sitendeki gibi) -->
+  <title>Avlu Zuhtubey Konagi</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
-    :root{
-      --bg:#f6f1e8;
-      --text:#2b241c;
-      --muted:#6e5b46;
-      --accent:#7a5e38;
-      --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-      --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    :root {
+      --bg: #f6f1e8;
+      --surface: rgba(255, 255, 255, 0.34);
+      --surface-strong: rgba(255, 255, 255, 0.55);
+      --text: #2b241c;
+      --muted: #6e5b46;
+      --accent: #7a5e38;
+      --accent-soft: rgba(122, 94, 56, 0.14);
+      --line: rgba(120, 94, 56, 0.18);
+      --serif: Georgia, Cambria, "Times New Roman", Times, serif;
+      --sans: "Segoe UI", Roboto, Arial, sans-serif;
     }
-    html,body{ background:var(--bg); color:var(--text); }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: var(--sans);
+      background:
+        radial-gradient(900px 380px at 50% 0%, rgba(122, 94, 56, 0.12), transparent 60%),
+        linear-gradient(180deg, #fbf8f2 0%, var(--bg) 42%, #efe7d9 100%);
+    }
+
+    .glass {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 45px rgba(43, 36, 28, 0.08);
+    }
+
+    .photo-frame {
+      overflow: hidden;
+      border-radius: 1.5rem;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      box-shadow: 0 18px 42px rgba(43, 36, 28, 0.08);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-card {
+      aspect-ratio: 4 / 5;
+    }
+
+    .gallery-card.wide {
+      grid-column: span 2;
+      aspect-ratio: 16 / 10;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .gallery-card.wide {
+        grid-column: span 2;
+      }
+    }
   </style>
 </head>
+<body class="min-h-screen">
+  <nav class="sticky top-0 z-50 border-b" style="border-color: var(--line); background: rgba(246, 241, 232, 0.82); backdrop-filter: blur(14px);">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <a href="./index.html" class="flex items-center gap-3">
+        <span class="grid h-10 w-10 place-items-center rounded-full border text-sm font-semibold" style="border-color: rgba(120, 94, 56, 0.25); color: var(--accent); background: rgba(255,255,255,0.28);">AV</span>
+        <span class="text-sm uppercase tracking-[0.25em] opacity-80">Avlu Zuhtubey</span>
+      </a>
 
-<body class="min-h-screen" style="font-family: var(--font-sans);">
-
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 border-b" style="border-color: rgba(120,94,56,0.18); background: rgba(246,241,232,0.82); backdrop-filter: blur(10px);">
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="flex h-16 items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
-          <span class="grid h-9 w-9 place-items-center rounded-full border"
-                style="border-color: rgba(120,94,56,0.25); background: rgba(255,255,255,0.25); color: var(--accent);">
-            ◻︎
-          </span>
-          <span class="text-sm tracking-[0.25em] uppercase opacity-80">Avlu Zühtübey</span>
-        </a>
-
-        <div class="hidden md:flex items-center gap-8 text-xs tracking-[0.25em] uppercase">
-          <a class="opacity-75 hover:opacity-100" href="#kahvalti">Kahvaltı</a>
-          <a class="opacity-75 hover:opacity-100" href="#organizasyon">Organizasyonlarımız</a>
-          <a class="opacity-75 hover:opacity-100" href="#galeri">Galeri</a>
-          <a class="opacity-75 hover:opacity-100" href="#iletisim">İletişim</a>
-
-
-        <a
-          class="rounded-xl px-4 py-2 text-xs font-semibold tracking-[0.22em] uppercase"
-          style="background: var(--accent); color: var(--bg);"
-          target="_blank" rel="noopener"
-          href="https://wa.me/905072550935?text=Merhaba%2C%20rezervasyon%20ve%20organizasyon%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.">
-          WhatsApp
-        </a>
+      <div class="hidden items-center gap-7 text-xs uppercase tracking-[0.22em] md:flex">
+        <a class="opacity-75 transition hover:opacity-100" href="#kahvalti">Kahvalti</a>
+        <a class="opacity-75 transition hover:opacity-100" href="#menu">Menu</a>
+        <a class="opacity-75 transition hover:opacity-100" href="#galeri">Galeri</a>
+        <a class="opacity-75 transition hover:opacity-100" href="#iletisim">Iletisim</a>
       </div>
+
+      <a
+        class="rounded-xl px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]"
+        style="background: var(--accent); color: var(--bg);"
+        href="https://wa.me/905072550935?text=Merhaba%2C%20rezervasyon%20ve%20organizasyon%20hakkinda%20bilgi%20almak%20istiyorum."
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp
+      </a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="relative">
+  <header class="relative overflow-hidden">
     <div class="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <div class="text-center">
-        <div class="mx-auto mb-6 w-14 h-14 rounded-full border"
-             style="border-color: rgba(120,94,56,0.22); background: rgba(255,255,255,0.25);"></div>
-
-        <h1 class="text-4xl md:text-6xl font-semibold"
-            style="font-family: var(--font-serif); color: var(--text);">
-          Avlu Zühtübey Konağı
-        </h1>
-
-        <p class="mt-4 text-sm md:text-base tracking-wide italic opacity-75"
-           style="color: var(--muted);">
-          1824’ten bugüne, tarihin kalbinde bir soluklanma
+        <div class="mx-auto mb-6 h-14 w-14 rounded-full border" style="border-color: rgba(120, 94, 56, 0.22); background: rgba(255,255,255,0.25);"></div>
+        <p class="text-xs uppercase tracking-[0.34em] opacity-70">1824'ten bugune tarihi bir bulusma noktasi</p>
+        <h1 class="mt-4 text-4xl font-semibold md:text-6xl" style="font-family: var(--serif);">Avlu Zuhtubey Konagi</h1>
+        <p class="mx-auto mt-5 max-w-3xl text-base leading-relaxed opacity-80 md:text-lg">
+          Manisa Kula'nin tarihi dokusunda, tas duvarlarin arasinda sakin kahvalti sofralari, ozel bulusmalar ve avludan kareler.
         </p>
-
-        <p class="mx-auto mt-6 max-w-3xl text-base md:text-lg leading-relaxed opacity-80"
-           style="color: var(--text);">
-          Manisa Kula’nın tarihi dokusunda, 200 yıllık taş duvarların arasında unutulmaz anılar biriktirin.
-        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a class="rounded-xl px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em]" style="background: var(--accent); color: var(--bg);" href="#kahvalti">Kahvaltiyi Kesfet</a>
+          <a class="rounded-xl border px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em]" style="border-color: rgba(120, 94, 56, 0.25); background: rgba(255,255,255,0.24);" href="./m-7k9p3/">Menuyu Ac</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- KAHRVALTI / ORGANIZASYON / GALERI (placeholder - sen foto/icerik ekleyeceksin) -->
   <main>
     <section id="kahvalti" class="py-20">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="grid gap-10 md:grid-cols-2 items-center">
-          <div>
-            <div class="text-xs tracking-[0.3em] uppercase opacity-70">Kahvaltı Salonu</div>
-            <h2 class="mt-2 text-3xl md:text-4xl font-semibold"
-                style="font-family: var(--font-serif); color: var(--text);">
-              Tarihin kalbinde kahvaltı
-            </h2>
-            <p class="mt-4 leading-relaxed opacity-80" style="color: var(--text);">
-              Yöresel lezzetlerimiz ve ev yapımı reçellerimizle, avlumuzda eşsiz bir kahvaltı deneyimi yaşayın.
-            </p>
+      <div class="mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-2">
+        <div>
+          <div class="text-xs uppercase tracking-[0.3em] opacity-70">Kahvalti Salonu</div>
+          <h2 class="mt-3 text-3xl font-semibold md:text-5xl" style="font-family: var(--serif);">Tarihin kalbinde serpme kahvalti</h2>
+          <p class="mt-5 text-base leading-relaxed opacity-80 md:text-lg">
+            Yoresel lezzetler, ev yapimi receller ve avlunun sakin atmosferiyle uzun uzun oturmak isteyeceginiz bir sabah sofrasi.
+          </p>
+          <p class="mt-4 leading-relaxed" style="color: var(--muted);">
+            Kahvalti icerigini, ekstralari ve icecekleri menu sayfamizdan inceleyebilir; rezervasyon icin bize dogrudan yazabilirsiniz.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a class="rounded-xl px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em]" style="background: var(--accent); color: var(--bg);" href="./m-7k9p3/">Menu Sayfasi</a>
+            <a class="rounded-xl border px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em]" style="border-color: rgba(120, 94, 56, 0.28); background: rgba(255,255,255,0.2);" href="https://wa.me/905072550935?text=Merhaba%2C%20kahvalti%20icin%20rezervasyon%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener">Rezervasyon</a>
           </div>
+        </div>
 
-          <div class="rounded-2xl border overflow-hidden"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.25);">
-            <div class="aspect-[4/3] grid place-items-center opacity-60">
-              (placeholder)
-            </div>
-          </div>
+        <div class="photo-frame aspect-[4/5] md:aspect-[4/4.6]">
+          <img src="./kahvalt1.jpeg" alt="Avlu Zuhtubey Konagi kahvalti sunumu" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <section id="organizasyon" class="py-20" style="background: rgba(255,255,255,0.18);">
+    <section id="menu" class="py-20" style="background: rgba(255,255,255,0.18);">
       <div class="mx-auto max-w-6xl px-6">
-        <div class="text-xs tracking-[0.3em] uppercase opacity-70">Organizasyonlarımız</div>
-        <h2 class="mt-2 text-3xl md:text-4xl font-semibold"
-            style="font-family: var(--font-serif); color: var(--text);">
-          Özel günler için Avlu
-        </h2>
-        <p class="mt-4 max-w-3xl leading-relaxed opacity-80" style="color: var(--text);">
-          Organizasyon talepleriniz için WhatsApp’tan bize yazın. (Detaylar coming soon)
-        </p>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="glass rounded-[1.5rem] p-7 md:col-span-1">
+            <div class="text-xs uppercase tracking-[0.3em] opacity-70">Menu</div>
+            <h2 class="mt-3 text-3xl font-semibold" style="font-family: var(--serif);">Kahvalti, icecekler ve Avlu ikramlari</h2>
+            <p class="mt-4 leading-relaxed opacity-80">
+              Ana menude serpme kahvalti, ekstralar, sicak ve soguk icecekler ile gunluk ikramlar yer aliyor.
+            </p>
+            <a class="mt-6 inline-flex rounded-xl px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em]" style="background: var(--accent); color: var(--bg);" href="./m-7k9p3/">Detayli Menu</a>
+          </div>
 
-        <div class="mt-10 grid gap-6 md:grid-cols-3">
-          <div class="rounded-2xl border p-6"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">
-            (Kategori 1)
+          <div class="photo-frame gallery-card wide md:col-span-2 md:aspect-[16/9]">
+            <img src="./avludankareler1.jpeg" alt="Avlu detay fotografi 1" loading="lazy" />
           </div>
-          <div class="rounded-2xl border p-6"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">
-            (Kategori 2)
+        </div>
+
+        <div class="mt-6 grid gap-6 md:grid-cols-3">
+          <div class="photo-frame gallery-card md:aspect-[4/4.2]">
+            <img src="./avludankareler2.jpeg" alt="Avlu detay fotografi 2" loading="lazy" />
           </div>
-          <div class="rounded-2xl border p-6"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">
-            (Kategori 3)
+          <div class="photo-frame gallery-card md:aspect-[4/4.2]">
+            <img src="./avludankareler3.jpeg" alt="Avlu detay fotografi 3" loading="lazy" />
+          </div>
+          <div class="glass rounded-[1.5rem] p-7">
+            <div class="text-xs uppercase tracking-[0.26em] opacity-70">Organizasyon</div>
+            <p class="mt-3 text-base leading-relaxed opacity-80">
+              Ozel gunler, toplu kahvaltilar ve butik bulusmalar icin tarih bilgisiyle birlikte WhatsApp'tan bize ulasabilirsiniz.
+            </p>
           </div>
         </div>
       </div>
@@ -135,142 +185,89 @@
 
     <section id="galeri" class="py-20">
       <div class="mx-auto max-w-6xl px-6">
-        <div class="text-xs tracking-[0.3em] uppercase opacity-70">Galeri</div>
-        <h2 class="mt-2 text-3xl md:text-4xl font-semibold"
-            style="font-family: var(--font-serif); color: var(--text);">
-          Avludan kareler
-        </h2>
-        <p class="mt-4 max-w-3xl leading-relaxed opacity-80" style="color: var(--text);">
-          Gerçek fotoğrafları sen yükleyeceksin.
-        </p>
+        <div class="max-w-3xl">
+          <div class="text-xs uppercase tracking-[0.3em] opacity-70">Galeri</div>
+          <h2 class="mt-3 text-3xl font-semibold md:text-4xl" style="font-family: var(--serif);">Avludan kareler</h2>
+          <p class="mt-4 leading-relaxed opacity-80">
+            Eklediginiz 14 fotografin tamami anasayfada kullaniliyor. Kahvalti sunumu ustte yer aliyor; kalan kareler avlunun atmosferini galeride anlatıyor.
+          </p>
+        </div>
 
-        <div class="mt-10 grid gap-4 md:grid-cols-3">
-          <div class="aspect-[4/3] rounded-2xl border grid place-items-center opacity-60"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">(Foto 1)</div>
-          <div class="aspect-[4/3] rounded-2xl border grid place-items-center opacity-60"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">(Foto 2)</div>
-          <div class="aspect-[4/3] rounded-2xl border grid place-items-center opacity-60"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">(Foto 3)</div>
+        <div class="gallery-grid mt-10">
+          <figure class="photo-frame gallery-card wide"><img src="./avlu1.jpeg" alt="Avlu foto 1" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card"><img src="./avlu2.jpeg" alt="Avlu foto 2" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card"><img src="./avlu3.jpeg" alt="Avlu foto 3" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card"><img src="./avlu4.jpeg" alt="Avlu foto 4" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card wide"><img src="./avlu5.jpeg" alt="Avlu foto 5" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card"><img src="./avlu6.jpeg" alt="Avlu foto 6" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card"><img src="./avlu7.jpeg" alt="Avlu foto 7" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card"><img src="./avlu8.jpeg" alt="Avlu foto 8" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card"><img src="./avlu9.jpeg" alt="Avlu foto 9" loading="lazy" /></figure>
+          <figure class="photo-frame gallery-card wide"><img src="./avlu10.jpeg" alt="Avlu foto 10" loading="lazy" /></figure>
         </div>
       </div>
     </section>
 
-    <!-- İLETİŞİM (GÜNCEL) -->
     <section id="iletisim" class="py-24" style="background: var(--bg);">
       <div class="mx-auto max-w-6xl px-6">
-        <div class="mb-10">
-          <div class="text-xs tracking-[0.3em] uppercase opacity-70">İletişim</div>
-          <h2 class="mt-2 text-3xl md:text-4xl font-semibold"
-              style="font-family: var(--font-serif); color: var(--text);">Bize ulaşın</h2>
-          <p class="mt-3 max-w-2xl text-base md:text-lg leading-relaxed opacity-80" style="color: var(--text);">
-            Rezervasyon ve organizasyon talepleriniz için WhatsApp üzerinden hızlıca yazabilirsiniz.
+        <div class="mb-10 max-w-2xl">
+          <div class="text-xs uppercase tracking-[0.3em] opacity-70">Iletisim</div>
+          <h2 class="mt-3 text-3xl font-semibold md:text-4xl" style="font-family: var(--serif);">Bize ulasin</h2>
+          <p class="mt-4 text-base leading-relaxed opacity-80 md:text-lg">
+            Rezervasyon ve organizasyon talepleriniz icin WhatsApp uzerinden hizlica yazabilirsiniz.
           </p>
         </div>
 
-        <div class="grid gap-8 md:grid-cols-2 items-start">
-          <!-- Sol: Bilgiler -->
-          <div class="rounded-2xl border p-8"
-               style="border-color: rgba(120, 94, 56, 0.25); background: rgba(255,255,255,0.35); backdrop-filter: blur(6px);">
+        <div class="grid items-start gap-8 md:grid-cols-2">
+          <div class="glass rounded-[1.5rem] p-8">
             <div class="space-y-7">
-              <div class="flex gap-4">
-                <div class="mt-1 text-xl" style="color: var(--accent);">📍</div>
-                <div>
-                  <div class="text-sm tracking-wide uppercase opacity-70" style="color: var(--text);">Adres</div>
-                  <div class="mt-1 leading-relaxed" style="color: var(--text);">
-                    Zühtübey Mahallesi, Tarihi Konak Sokak No:1<br/>Kula, Manisa
-                  </div>
-                </div>
+              <div>
+                <div class="text-sm uppercase tracking-[0.2em] opacity-70">Adres</div>
+                <div class="mt-2 leading-relaxed">Zuhtubey Mahallesi, Tarihi Konak Sokak No:1<br />Kula, Manisa</div>
               </div>
-
-              <div class="flex gap-4">
-                <div class="mt-1 text-xl" style="color: var(--accent);">☎️</div>
-                <div>
-                  <div class="text-sm tracking-wide uppercase opacity-70" style="color: var(--text);">Telefon</div>
-                  <div class="mt-1 leading-relaxed" style="color: var(--text);">
-                    <a class="underline underline-offset-4 decoration-[rgba(120,94,56,0.35)] hover:decoration-[rgba(120,94,56,0.7)]"
-                       href="tel:+905072550935">+90 507 255 09 35</a>
-                  </div>
-                </div>
+              <div>
+                <div class="text-sm uppercase tracking-[0.2em] opacity-70">Telefon</div>
+                <a class="mt-2 inline-block underline underline-offset-4" href="tel:+905072550935">+90 507 255 09 35</a>
               </div>
-
-              <div class="flex gap-4">
-                <div class="mt-1 text-xl" style="color: var(--accent);">🕒</div>
-                <div>
-                  <div class="text-sm tracking-wide uppercase opacity-70" style="color: var(--text);">Çalışma Saatleri</div>
-                  <div class="mt-1 leading-relaxed" style="color: var(--text);">Her gün 08:00 – 23:00</div>
-                </div>
+              <div>
+                <div class="text-sm uppercase tracking-[0.2em] opacity-70">Calisma Saatleri</div>
+                <div class="mt-2">Her gun 08:00 - 23:00</div>
               </div>
             </div>
 
             <div class="mt-10 space-y-3">
-              <a
-                class="block w-full rounded-xl px-6 py-4 text-center text-sm md:text-base font-semibold tracking-wide"
-                style="background: var(--accent); color: var(--bg);"
-                target="_blank" rel="noopener"
-                href="https://wa.me/905072550935?text=Merhaba%2C%20rezervasyon%20ve%20organizasyon%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.">
-                WhatsApp’tan Rezervasyon
-              </a>
-
-              <a
-                class="block w-full rounded-xl px-6 py-4 text-center text-sm md:text-base font-semibold tracking-wide border"
-                style="border-color: rgba(120, 94, 56, 0.45); color: var(--text); background: rgba(255,255,255,0.15);"
-                target="_blank" rel="noopener"
-                href="https://www.google.com/maps/search/?api=1&query=38.5480155718006%2C28.646412176826605">
-                Google Maps’te Aç
-              </a>
-
-              <a
-                class="mt-4 flex items-center gap-4 rounded-full border px-6 py-4 hover:shadow-sm transition"
-                style="border-color: rgba(120, 94, 56, 0.35); background: rgba(255,255,255,0.18); color: var(--text);"
-                target="_blank" rel="noopener"
-                href="https://www.instagram.com/avlu_zuhtubeykonagi/">
-                <span class="grid place-items-center w-12 h-12 rounded-full"
-                      style="background: rgba(120, 94, 56, 0.12); color: var(--accent);">
-                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.75 2.5h8.5A5.25 5.25 0 0 1 21.5 7.75v8.5A5.25 5.25 0 0 1 16.25 21.5h-8.5A5.25 5.25 0 0 1 2.5 16.25v-8.5A5.25 5.25 0 0 1 7.75 2.5Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M17.35 6.85h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
-                  </svg>
-                </span>
-                <span class="leading-tight">
-                  <span class="block text-sm md:text-base font-semibold tracking-wide">Bizi Instagram’dan takip edin</span>
-                  <span class="block text-xs md:text-sm opacity-75">@avlu_zuhtubeykonagi</span>
-                </span>
-              </a>
+              <a class="block rounded-xl px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.16em]" style="background: var(--accent); color: var(--bg);" href="https://wa.me/905072550935?text=Merhaba%2C%20rezervasyon%20ve%20organizasyon%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+              <a class="block rounded-xl border px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.16em]" style="border-color: rgba(120, 94, 56, 0.35);" href="https://www.google.com/maps/search/?api=1&query=38.5480155718006%2C28.646412176826605" target="_blank" rel="noopener">Google Maps'te Ac</a>
+              <a class="block rounded-xl border px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.16em]" style="border-color: rgba(120, 94, 56, 0.35); background: rgba(255,255,255,0.16);" href="https://www.instagram.com/avlu_zuhtubeykonagi/" target="_blank" rel="noopener">Instagram @avlu_zuhtubeykonagi</a>
             </div>
           </div>
 
-          <!-- Sağ: Harita -->
-          <div class="rounded-2xl border overflow-hidden"
-               style="border-color: rgba(120, 94, 56, 0.25); background: rgba(255,255,255,0.25);">
-            <div class="aspect-[4/3]">
-              <iframe
-                title="Kula Zühtü Bey Konağı - Google Harita"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4184.887095053376!2d28.646412176826605!3d38.5480155718006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b80aca8e3cc42b%3A0xc015b4789225a5a2!2zS3VsYSBaw7xodMO8IEJleSBLb25hxJ_EsQ!5e1!3m2!1str!2str!4v1772556789146!5m2!1str!2str"
-                width="100%" height="100%"
-                style="border:0; display:block;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+          <div class="photo-frame aspect-[4/3]">
+            <iframe
+              title="Kula Zuhtubey Bey Konagi harita"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4184.887095053376!2d28.646412176826605!3d38.5480155718006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b80aca8e3cc42b%3A0xc015b4789225a5a2!2zS3VsYSBaw7xodMO8IEJleSBLb25hxJ_EsQ!5e1!3m2!1str!2str!4v1772556789146!5m2!1str!2str"
+              width="100%"
+              height="100%"
+              style="border:0; display:block;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen=""
+            ></iframe>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="py-10 border-t" style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.14);">
-    <div class="mx-auto max-w-6xl px-6 text-xs tracking-[0.25em] uppercase opacity-70 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <div>© Avlu Zühtübey Konağı</div>
+  <footer class="border-t py-10" style="border-color: var(--line); background: rgba(255,255,255,0.14);">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 text-xs uppercase tracking-[0.24em] opacity-70 md:flex-row md:items-center md:justify-between">
+      <div>Avlu Zuhtubey Konagi</div>
       <div class="flex items-center gap-6">
-        <a class="hover:opacity-100 opacity-80" href="/m-7k9p3/">Menü</a>
-        <a class="hover:opacity-100 opacity-80" href="#iletisim">İletişim</a>
+        <a class="opacity-80 transition hover:opacity-100" href="./m-7k9p3/">Menu</a>
+        <a class="opacity-80 transition hover:opacity-100" href="#iletisim">Iletisim</a>
       </div>
     </div>
   </footer>
-
 </body>
 </html>
-
 
