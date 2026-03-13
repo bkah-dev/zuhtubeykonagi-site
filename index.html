@@ -42,26 +42,106 @@
     .gallery-grid{
       display:grid;
       gap:1rem;
-      grid-template-columns:repeat(2,minmax(0,1fr));
+      grid-template-columns:repeat(1,minmax(0,1fr));
     }
 
     .gallery-item{
-      aspect-ratio:4/5;
-    }
-
-    .gallery-item.wide{
-      grid-column:span 2;
-      aspect-ratio:16/10;
+      aspect-ratio:4/3;
     }
 
     @media (min-width: 768px){
       .gallery-grid{
-        grid-template-columns:repeat(4,minmax(0,1fr));
+        grid-template-columns:repeat(3,minmax(0,1fr));
       }
+    }
 
-      .gallery-item.wide{
-        grid-column:span 2;
-      }
+    .carousel-shell{
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(120,94,56,0.18);
+      background:rgba(255,255,255,0.18);
+      border-radius:1.5rem;
+      box-shadow:0 18px 40px rgba(43,36,28,0.08);
+    }
+
+    .carousel-track{
+      display:flex;
+      transition:transform .5s ease;
+      will-change:transform;
+    }
+
+    .carousel-slide{
+      min-width:100%;
+      aspect-ratio:16/10;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .carousel-slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .carousel-overlay{
+      position:absolute;
+      inset:auto 0 0 0;
+      padding:1rem 1.25rem;
+      background:linear-gradient(to top, rgba(43,36,28,.55), rgba(43,36,28,0));
+      color:#fff;
+      font-size:.9rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;
+      height:44px;
+      border:none;
+      border-radius:999px;
+      background:rgba(246,241,232,0.88);
+      color:var(--accent);
+      font-size:20px;
+      cursor:pointer;
+      box-shadow:0 8px 18px rgba(43,36,28,0.12);
+      z-index:2;
+    }
+
+    .carousel-btn:hover{
+      background:#fff;
+    }
+
+    .carousel-btn.prev{
+      left:14px;
+    }
+
+    .carousel-btn.next{
+      right:14px;
+    }
+
+    .carousel-dots{
+      display:flex;
+      justify-content:center;
+      gap:.5rem;
+      margin-top:1rem;
+      flex-wrap:wrap;
+    }
+
+    .carousel-dot{
+      width:10px;
+      height:10px;
+      border:none;
+      border-radius:999px;
+      background:rgba(122,94,56,0.22);
+      cursor:pointer;
+    }
+
+    .carousel-dot.active{
+      background:var(--accent);
     }
   </style>
 </head>
@@ -70,7 +150,7 @@
 
   <nav class="sticky top-0 z-50 border-b" style="border-color: rgba(120,94,56,0.18); background: rgba(246,241,232,0.82); backdrop-filter: blur(10px);">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="flex h-16 items-center justify-between">
+      <div class="flex h-16 items-center justify-between gap-4">
         <a href="./index.html" class="flex items-center gap-3">
           <span class="grid h-9 w-9 place-items-center rounded-full border text-sm font-semibold"
                 style="border-color: rgba(120,94,56,0.25); background: rgba(255,255,255,0.25); color: var(--accent);">
@@ -86,13 +166,23 @@
           <a class="opacity-75 hover:opacity-100" href="#iletisim">İletişim</a>
         </div>
 
-        <a
-          class="rounded-xl px-4 py-2 text-xs font-semibold tracking-[0.22em] uppercase"
-          style="background: var(--accent); color: var(--bg);"
-          target="_blank" rel="noopener"
-          href="https://wa.me/905072550935?text=Merhaba%2C%20rezervasyon%20ve%20organizasyon%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.">
-          WhatsApp
-        </a>
+        <div class="flex items-center gap-2 md:gap-3">
+          <a
+            class="rounded-xl px-4 py-2 text-xs font-semibold tracking-[0.18em] uppercase border"
+            style="border-color: rgba(120,94,56,0.28); color: var(--text); background: rgba(255,255,255,0.18);"
+            target="_blank" rel="noopener"
+            href="https://www.instagram.com/avlu_zuhtubeykonagi/">
+            Instagram
+          </a>
+
+          <a
+            class="rounded-xl px-4 py-2 text-xs font-semibold tracking-[0.22em] uppercase"
+            style="background: var(--accent); color: var(--bg);"
+            target="_blank" rel="noopener"
+            href="https://wa.me/905072550935?text=Merhaba%2C%20rezervasyon%20ve%20organizasyon%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.">
+            WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   </nav>
@@ -139,19 +229,14 @@
             </p>
           </div>
 
-          <div class="grid gap-4 md:grid-cols-[1.35fr_0.65fr]">
-            <div class="photo-card aspect-[4/5] md:aspect-[4/4.7]">
-              <img src="./kahvalt1.jpeg" alt="Avlu Zühtübey Konağı kahvaltı sunumu" loading="lazy" />
-            </div>
-            <div class="photo-card aspect-[4/3] md:aspect-auto">
-              <img src="./kahvalti.jpg" alt="Avlu Zühtübey Konağı kahvaltı masası" loading="lazy" />
-            </div>
+          <div class="photo-card aspect-[4/5] md:aspect-[4/4.8]">
+            <img src="./kahvalt1.jpeg" alt="Avlu Zühtübey Konağı kahvaltı sunumu" loading="lazy" />
           </div>
         </div>
       </div>
     </section>
 
-    <section id="organizasyon" class="py-20" style="background: rgba(255,255,255,0.18);">
+    <section id="organizasyon" class="py-20">
       <div class="mx-auto max-w-6xl px-6">
         <div class="text-xs tracking-[0.3em] uppercase opacity-70">Organizasyonlarımız</div>
         <h2 class="mt-2 text-3xl md:text-4xl font-semibold"
@@ -159,27 +244,62 @@
           Özel günler için Avlu
         </h2>
         <p class="mt-4 max-w-3xl leading-relaxed opacity-80" style="color: var(--text);">
-          Doğum günü, butik buluşma, özel kahvaltı ve toplu rezervasyon talepleriniz için WhatsApp üzerinden bize ulaşabilirsiniz.
+          Doğum günü, butik buluşma, özel kahvaltı ve toplu rezervasyon talepleriniz için avlumuzdan kareler.
         </p>
 
-        <div class="mt-10 grid gap-6 md:grid-cols-3">
-          <div class="rounded-2xl border p-6"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">
-            Sıcak ve samimi avlu atmosferinde butik kutlamalar.
-          </div>
-          <div class="rounded-2xl border p-6"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">
-            Tarihi dokunun içinde fotoğraf çekimi ve özel buluşmalar.
-          </div>
-          <div class="rounded-2xl border p-6"
-               style="border-color: rgba(120,94,56,0.18); background: rgba(255,255,255,0.22);">
-            Uygun tarih ve detaylar için bizimle doğrudan iletişime geçin.
+        <div class="mt-10 carousel-shell">
+          <button class="carousel-btn prev" type="button" aria-label="Önceki fotoğraf">‹</button>
+          <button class="carousel-btn next" type="button" aria-label="Sonraki fotoğraf">›</button>
+
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <img src="./avlu1.jpeg" alt="Avlu organizasyon fotoğraf 1" loading="lazy" />
+              <div class="carousel-overlay">Avlu atmosferi</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu2.jpeg" alt="Avlu organizasyon fotoğraf 2" loading="lazy" />
+              <div class="carousel-overlay">Özel günler</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu3.jpeg" alt="Avlu organizasyon fotoğraf 3" loading="lazy" />
+              <div class="carousel-overlay">Tarihi doku</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu4.jpeg" alt="Avlu organizasyon fotoğraf 4" loading="lazy" />
+              <div class="carousel-overlay">Butik buluşmalar</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu5.jpeg" alt="Avlu organizasyon fotoğraf 5" loading="lazy" />
+              <div class="carousel-overlay">Kutlamalar</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu6.jpeg" alt="Avlu organizasyon fotoğraf 6" loading="lazy" />
+              <div class="carousel-overlay">Konağın avlusu</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu7.jpeg" alt="Avlu organizasyon fotoğraf 7" loading="lazy" />
+              <div class="carousel-overlay">Sıcak atmosfer</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu8.jpeg" alt="Avlu organizasyon fotoğraf 8" loading="lazy" />
+              <div class="carousel-overlay">Özel anlar</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu9.jpeg" alt="Avlu organizasyon fotoğraf 9" loading="lazy" />
+              <div class="carousel-overlay">Taş duvarlar arasında</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="./avlu10.jpeg" alt="Avlu organizasyon fotoğraf 10" loading="lazy" />
+              <div class="carousel-overlay">Avlu Zühtübey Konağı</div>
+            </div>
           </div>
         </div>
+
+        <div class="carousel-dots" id="carouselDots"></div>
       </div>
     </section>
 
-    <section id="galeri" class="py-20">
+    <section id="galeri" class="py-20" style="background: rgba(255,255,255,0.12);">
       <div class="mx-auto max-w-6xl px-6">
         <div class="text-xs tracking-[0.3em] uppercase opacity-70">Galeri</div>
         <h2 class="mt-2 text-3xl md:text-4xl font-semibold"
@@ -191,19 +311,9 @@
         </p>
 
         <div class="mt-10 gallery-grid">
-          <figure class="photo-card gallery-item wide"><img src="./avlu1.jpeg" alt="Avlu fotoğraf 1" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item"><img src="./avlu2.jpeg" alt="Avlu fotoğraf 2" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item"><img src="./avlu3.jpeg" alt="Avlu fotoğraf 3" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item"><img src="./avlu4.jpeg" alt="Avlu fotoğraf 4" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item wide"><img src="./avlu5.jpeg" alt="Avlu fotoğraf 5" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item"><img src="./avlu6.jpeg" alt="Avlu fotoğraf 6" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item"><img src="./avlu7.jpeg" alt="Avlu fotoğraf 7" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item"><img src="./avlu8.jpeg" alt="Avlu fotoğraf 8" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item"><img src="./avlu9.jpeg" alt="Avlu fotoğraf 9" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item wide"><img src="./avlu10.jpeg" alt="Avlu fotoğraf 10" loading="lazy" /></figure>
           <figure class="photo-card gallery-item"><img src="./avludankareler1.jpeg" alt="Avludan kare 1" loading="lazy" /></figure>
           <figure class="photo-card gallery-item"><img src="./avludankareler2.jpeg" alt="Avludan kare 2" loading="lazy" /></figure>
-          <figure class="photo-card gallery-item wide"><img src="./avludankareler3.jpeg" alt="Avludan kare 3" loading="lazy" /></figure>
+          <figure class="photo-card gallery-item"><img src="./avludankareler3.jpeg" alt="Avludan kare 3" loading="lazy" /></figure>
         </div>
       </div>
     </section>
@@ -262,14 +372,6 @@
                 href="https://www.google.com/maps/search/?api=1&query=38.5480155718006%2C28.646412176826605">
                 Google Maps'te Aç
               </a>
-
-              <a
-                class="block w-full rounded-xl px-6 py-4 text-center text-sm md:text-base font-semibold tracking-wide border"
-                style="border-color: rgba(120, 94, 56, 0.35); color: var(--text); background: rgba(255,255,255,0.18);"
-                target="_blank" rel="noopener"
-                href="https://www.instagram.com/avlu_zuhtubeykonagi/">
-                Instagram: @avlu_zuhtubeykonagi
-              </a>
             </div>
           </div>
 
@@ -300,6 +402,63 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const slides = Array.from(track.children);
+    const dotsWrap = document.getElementById('carouselDots');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    let currentIndex = 0;
+    let autoPlay;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Fotoğraf ' + (index + 1));
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsWrap.children);
+
+    function updateCarousel() {
+      track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      updateCarousel();
+      resetAutoplay();
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentIndex - 1);
+    }
+
+    function startAutoplay() {
+      autoPlay = setInterval(nextSlide, 3500);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoPlay);
+      startAutoplay();
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    updateCarousel();
+    startAutoplay();
+  </script>
 
 </body>
 </html>
