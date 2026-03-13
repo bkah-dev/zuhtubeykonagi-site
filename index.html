@@ -85,12 +85,18 @@
       will-change:transform;
     }
 
-    .carousel-slide{
-      min-width:100%;
-      aspect-ratio:16/10;
-      position:relative;
-      overflow:hidden;
-    }
+	.carousel-slide{
+	  min-width:100%;
+	  aspect-ratio:4/5;
+	  position:relative;
+	  overflow:hidden;
+	}
+
+	@media (min-width: 768px){
+	  .carousel-slide{
+		aspect-ratio:16/10;
+	  }
+	}
 
     .carousel-slide img{
       width:100%;
