@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Nunito+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet">
 
   <style>
 	:root{
@@ -21,26 +21,6 @@
       --shadow: 0 18px 50px rgba(74, 63, 53, 0.12);
       --shadow-soft: 0 10px 30px rgba(74, 63, 53, 0.10);
       --line: rgba(74, 63, 53, 0.16);
-    }
-
-    .breakfast-bg{
-      position: relative;
-      overflow: hidden;
-    }
-
-    .breakfast-bg::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:url("../kahvalti.jpg");
-      background-size:cover;
-      background-position:center;
-      opacity:0.18;
-    }
-
-    .breakfast-bg > *{
-      position:relative;
-      z-index:2;
     }
 
     *{ box-sizing:border-box; }
@@ -305,7 +285,7 @@
   <div class="topbar">
     <div class="topbar-inner">
 	<div class="brand">
-	  <img src="../logo-mark.png" alt="Avlu Zühtübey Konağı logosu" style="width:84px;height:84px;object-fit:contain;">
+	  <img src="../logo-mark.png" alt="Avlu Zühtübey Konağı logosu" style="width:52px;height:52px;object-fit:contain;">
 	  <div class="brand-title">Avlu Menü</div>
 	</div>
       <div class="top-actions">
@@ -349,7 +329,7 @@
     <div class="section">
       <div class="section-title"><h2>Kahvaltı</h2></div>
 
-      <div class="card breakfast-bg">
+      <div class="card">
         <div class="menu-item">
           <span><strong>Kahvaltı (Kişi Başı)</strong></span>
           <span class="menu-price">450 ₺</span>
@@ -421,40 +401,66 @@
     </div>
 
     <div class="section">
+      <div class="section-title"><h2>Tostlar</h2></div>
+      <div class="card">
+        <div class="menu-item">
+          <span>Tost</span>
+          <span class="menu-price">100 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Tost Menü</span>
+          <span class="menu-price">180 ₺</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><h2>Avlu İkramları</h2></div>
+      <div class="card">
+        <div class="menu-item">
+          <span>Brownie</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Çilekli Turta</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Anne Kurabiyesi</span>
+          <span class="menu-price">50 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Dereotlu Poğaça</span>
+          <span class="menu-price">35 ₺</span>
+        </div>
+
+        <div class="menu-sub" style="margin-top:12px">
+          <strong>Günlük Çıkanlar</strong><br>
+          Güne göre değişen kek, kurabiye ve diğer çeşitlerimizi sorabilirsiniz.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
       <div class="section-title"><h2>Sıcak İçecekler</h2></div>
       <div class="card">
         <div class="menu-item">
           <span>Çay</span>
           <span class="menu-price">25 ₺</span>
         </div>
-		<div class="menu-item">
+        <div class="menu-item">
           <span>Double Çay</span>
           <span class="menu-price">40 ₺</span>
         </div>
-
         <div class="menu-item">
           <span>Bitki Çayları</span>
           <span class="menu-price">100 ₺</span>
         </div>
         <div class="menu-item">
-          <span>Salep</span>
-          <span class="menu-price">150 ₺</span>
-        </div>
-        <div class="menu-item">
-          <span>Sıcak Çikolata</span>
-          <span class="menu-price">150 ₺</span>
-        </div>
-      </div>
-    </div>
-	<div class="section">
-		
-      <div class="section-title"><h2>Kahveler</h2></div>
-      <div class="card">
-		<div class="menu-item">
           <span>Türk Kahvesi</span>
           <span class="menu-price">90 ₺</span>
         </div>
-		<div class="menu-item">
+        <div class="menu-item">
           <span>Double Türk Kahvesi</span>
           <span class="menu-price">160 ₺</span>
         </div>
@@ -483,22 +489,20 @@
           <span class="menu-price">140 ₺</span>
         </div>
 		<div class="menu-item">
-          <span>Ice Americano</span>
-          <span class="menu-price">150 ₺</span>
-        </div>  	
-		<div class="menu-item">
           <span>Latte</span>
           <span class="menu-price">150 ₺</span>
         </div> 
 		<div class="menu-item">
-          <span>Ice Latte</span>
-          <span class="menu-price">160 ₺</span>
-        </div> 
-		<div class="menu-item">
-          <span>Cappucino</span>
+          <span>Cappuccino</span>
           <span class="menu-price">150 ₺</span>
-        </div> 
-
+        </div>
+        <div class="menu-item">
+          <span>Salep</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Sıcak Çikolata</span>
+          <span class="menu-price">150 ₺</span>
         </div>
       </div>
     </div>
@@ -506,6 +510,14 @@
     <div class="section">
       <div class="section-title"><h2>Soğuk İçecekler</h2></div>
       <div class="card">
+        <div class="menu-item">
+          <span>Ice Americano</span>
+          <span class="menu-price">150 ₺</span>
+        </div>
+        <div class="menu-item">
+          <span>Ice Latte</span>
+          <span class="menu-price">160 ₺</span>
+        </div>
         <div class="menu-item">
           <span>Ev Yapımı Limonata</span>
           <span class="menu-price">150 ₺</span>
@@ -541,47 +553,6 @@
 		<div class="menu-item">
           <span>Su</span>
           <span class="menu-price">20 ₺</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title"><h2>Avlu İkramları</h2></div>
-      <div class="card">
-        <div class="menu-item">
-          <span>Brownie</span>
-          <span class="menu-price">150 ₺</span>
-        </div>
-        <div class="menu-item">
-          <span>Çilekli Turta</span>
-          <span class="menu-price">150 ₺</span>
-        </div>
-        <div class="menu-item">
-          <span>Anne Kurabiyesi</span>
-          <span class="menu-price">50 ₺</span>
-        </div>
-        <div class="menu-item">
-          <span>Dereotlu Poğaça</span>
-          <span class="menu-price">35 ₺</span>
-        </div>
-
-        <div class="menu-sub" style="margin-top:12px">
-          <strong>Günlük Çıkanlar</strong><br>
-          Güne göre değişen kek, kurabiye ve diğer çeşitlerimizi sorabilirsiniz.
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title"><h2>Tost</h2></div>
-      <div class="card">
-        <div class="menu-item">
-          <span>Tost Menü</span>
-          <span class="menu-price">180 ₺</span>
-        </div>
-        <div class="menu-item">
-          <span>Tost</span>
-          <span class="menu-price">100 ₺</span>
         </div>
       </div>
     </div>
