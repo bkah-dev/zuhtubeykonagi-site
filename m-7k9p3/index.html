@@ -24,10 +24,14 @@
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    html{
+      min-height:100%;
+      scroll-behavior:smooth;
+    }
 
 	body{
 	  margin:0;
+	  min-height:100vh;
 	  background: var(--color-bg);
 	  color: var(--color-text);
 	  font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -50,9 +54,6 @@
     }
 
 	.topbar{
-	  position: sticky;
-	  top: 0;
-	  z-index: 10;
 	  backdrop-filter: blur(10px);
 	  background: rgba(246, 241, 232, 0.94);
 	  border-bottom: 1px solid rgba(120,94,56,0.14);
@@ -105,6 +106,54 @@
       gap: 10px;
       flex-wrap: wrap;
       justify-content:flex-end;
+    }
+
+    .menu-shortcuts{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-top: 1px solid rgba(120,94,56,0.10);
+      border-bottom: 1px solid rgba(120,94,56,0.14);
+      background: rgba(246,241,232,0.94);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(74,63,53,0.08);
+    }
+
+    .menu-shortcuts-inner{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 10px 16px 12px;
+      display:flex;
+      gap: 8px;
+      width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .menu-shortcuts-inner::-webkit-scrollbar{
+      display:none;
+    }
+
+    .shortcut-link{
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,94,56,0.16);
+      background: rgba(255,255,255,0.58);
+      color: rgba(74,63,53,0.82);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .shortcut-link:hover,
+    .shortcut-link:focus-visible{
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+      outline: none;
     }
 
     .btn{
@@ -203,6 +252,7 @@
     .section{
       margin-top: 22px;
       padding-top: 16px;
+      scroll-margin-top: 64px;
     }
 
     .section-title{
@@ -277,6 +327,7 @@
       .hero h1{ font-size: 36px; }
       .btn{ padding: 10px 12px; }
       .menu-item{ align-items:flex-start; }
+      .section{ scroll-margin-top: 64px; }
     }
   </style>
 </head>
@@ -302,6 +353,17 @@
     </div>
   </div>
 
+  <nav class="menu-shortcuts" aria-label="Menü bölümleri">
+    <div class="menu-shortcuts-inner">
+      <a class="shortcut-link" href="#kahvalti">Kahvaltı</a>
+      <a class="shortcut-link" href="#ekstralar">Ekstralar</a>
+      <a class="shortcut-link" href="#tostlar">Tostlar</a>
+      <a class="shortcut-link" href="#ikramlar">İkramlar</a>
+      <a class="shortcut-link" href="#sicak-icecekler">Sıcak İçecekler</a>
+      <a class="shortcut-link" href="#soguk-icecekler">Soğuk İçecekler</a>
+    </div>
+  </nav>
+
   <div class="wrap">
 	<div class="hero">
 	  <div class="hero-inner">
@@ -326,7 +388,7 @@
 		</div>
 	</div>
 
-    <div class="section">
+    <div class="section" id="kahvalti">
       <div class="section-title"><h2>Kahvaltı</h2></div>
 
       <div class="card">
@@ -366,7 +428,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="ekstralar">
       <div class="section-title"><h2>Kahvaltı Ekstraları</h2></div>
       <div class="card">
 	    <div class="menu-item">
@@ -400,7 +462,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="tostlar">
       <div class="section-title"><h2>Tostlar</h2></div>
       <div class="card">
         <div class="menu-item">
@@ -414,7 +476,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="ikramlar">
       <div class="section-title"><h2>Avlu İkramları</h2></div>
       <div class="card">
         <div class="menu-item">
@@ -441,7 +503,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="sicak-icecekler">
       <div class="section-title"><h2>Sıcak İçecekler</h2></div>
       <div class="card">
         <div class="menu-item">
@@ -507,7 +569,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="soguk-icecekler">
       <div class="section-title"><h2>Soğuk İçecekler</h2></div>
       <div class="card">
         <div class="menu-item">
