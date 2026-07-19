@@ -135,8 +135,19 @@
     <form id="settingsForm" method="dialog">
       <span class="eyebrow">Rapor bağlantısı</span>
       <h2>Google Sheets</h2>
-      <p>Google Apps Script dağıtım adresini girin. Boş bırakılırsa kapanan hesaplar bu cihazda bekletilir.</p>
-      <label class="settings-field">Web uygulaması adresi
+      <p><strong>Normal Google Sheet linki buraya yapıştırılmaz.</strong> Kayıt gönderebilmek için sonu <code>/exec</code> ile biten Google Apps Script web uygulaması adresi gerekir.</p>
+      <details class="sheet-help">
+        <summary>Bu adresi nasıl alırım?</summary>
+        <ol>
+          <li>Boş bir Google Sheet açın.</li>
+          <li><strong>Uzantılar → Apps Script</strong> bölümüne girin.</li>
+          <li><a href="google-apps-script.gs" download>Hazır Apps Script kodunu indirin</a> ve editöre yapıştırın.</li>
+          <li><code>setup</code> fonksiyonunu bir kez çalıştırıp izin verin.</li>
+          <li><strong>Dağıt → Yeni dağıtım → Web uygulaması</strong> seçin; erişimi <strong>Herkes</strong> yapın.</li>
+          <li>Oluşan ve <code>/exec</code> ile biten adresi aşağıya yapıştırın.</li>
+        </ol>
+      </details>
+      <label class="settings-field">Apps Script web uygulaması adresi
         <input id="sheetEndpoint" type="url" placeholder="https://script.google.com/macros/s/…/exec">
       </label>
       <div class="queue-row"><span>Bekleyen kayıt</span><strong id="queueCount">0</strong></div>
