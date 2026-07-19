@@ -259,8 +259,14 @@ function renderOrder() {
   el.cartItemCount.textContent = quantity;
   el.checkoutButton.disabled = quantity === 0;
   if (document.activeElement !== el.tableNote) el.tableNote.value = table.note || "";
+  const previousScrollTop = el.cartItems.scrollTop;
+  const menuOrder = new Map(state.menu.map((item, index) => [item.id, index]));
+  const rows = Object.values(table.items).sort((a, b) => {
+    const aIndex = menuOrder.get(a.id) ?? Number.MAX_SAFE_INTEGER;
+    const bIndex = menuOrder.get(b.id) ?? Number.MAX_SAFE_INTEGER;
+    return aIndex - bIndex || a.name.localeCompare(b.name, "tr");
+  });
   el.cartItems.replaceChildren();
-  const rows = Object.values(table.items);
   el.cartEmpty.hidden = rows.length > 0;
   rows.forEach((row) => {
     const wrapper = document.createElement("div");
@@ -298,6 +304,7 @@ function renderOrder() {
     wrapper.append(top, controls);
     el.cartItems.append(wrapper);
   });
+  el.cartItems.scrollTop = previousScrollTop;
 }
 
 function openCheckout() {
