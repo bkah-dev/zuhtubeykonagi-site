@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f4737">
+  <title>Avlu Sipariş</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section id="authGate" class="auth-gate" aria-labelledby="loginTitle">
+    <form id="loginForm" class="login-card">
+      <img src="../logo-mark.png" alt="" width="78" height="78">
+      <span class="eyebrow">Avlu Zühtübey Konağı</span>
+      <h1 id="loginTitle">Personel girişi</h1>
+      <p>Masaları ve siparişleri görmek için personel hesabınızla giriş yapın.</p>
+      <label>E-posta
+        <input id="loginEmail" type="email" autocomplete="username" required>
+      </label>
+      <label>Şifre
+        <input id="loginPassword" type="password" autocomplete="current-password" required>
+      </label>
+      <p id="loginError" class="login-error" role="alert"></p>
+      <button id="loginButton" class="checkout-button" type="submit">Giriş yap</button>
+    </form>
+  </section>
+
+  <header class="app-header">
+    <div class="brand">
+      <img src="../logo-mark.png" alt="" width="46" height="46">
+      <div>
+        <p>Avlu Zühtübey Konağı</p>
+        <h1>Sipariş</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span id="staffEmail" class="staff-email"></span>
+      <span id="syncStatus" class="sync-status">Yerel kullanım</span>
+      <button id="settingsButton" class="icon-button" type="button" aria-label="Ayarları aç">Ayarlar</button>
+      <button id="logoutButton" class="icon-button" type="button">Çıkış</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="tables-panel" aria-label="Masalar">
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">Salon</span>
+          <h2>Masalar</h2>
+        </div>
+        <span id="openTableCount" class="count-badge">0 açık</span>
+      </div>
+      <div id="tableGrid" class="table-grid"></div>
+    </aside>
+
+    <section class="order-panel">
+      <div id="emptyState" class="empty-state">
+        <img src="../logo-mark.png" alt="" width="92" height="92">
+        <h2>Siparişe başlamak için masa seçin</h2>
+        <p>Soldaki 15 masadan birine dokunun.</p>
+      </div>
+
+      <div id="orderWorkspace" class="order-workspace" hidden>
+        <div class="order-titlebar">
+          <div>
+            <span class="eyebrow">Aktif hesap</span>
+            <h2 id="activeTableTitle">Masa 1</h2>
+          </div>
+          <div class="order-total-mini">
+            <span>Toplam</span>
+            <strong id="headerTotal">₺0</strong>
+          </div>
+        </div>
+
+        <div class="search-row">
+          <label class="search-box">
+            <span class="sr-only">Menüde ara</span>
+            <input id="menuSearch" type="search" placeholder="Menüde ara…" autocomplete="off">
+          </label>
+          <button id="showCartButton" class="cart-jump" type="button">Hesap <span id="cartItemCount">0</span></button>
+        </div>
+
+        <div id="categoryFilters" class="category-filters" aria-label="Menü kategorileri"></div>
+        <div id="menuLoading" class="menu-loading">Menü ve güncel fiyatlar yükleniyor…</div>
+        <div id="menuGrid" class="menu-grid"></div>
+      </div>
+    </section>
+
+    <aside id="cartPanel" class="cart-panel" aria-label="Masa hesabı">
+      <div class="panel-heading cart-heading">
+        <div>
+          <span class="eyebrow">Sipariş özeti</span>
+          <h2 id="cartTitle">Masa seçilmedi</h2>
+        </div>
+        <button id="closeCartButton" class="close-cart" type="button" aria-label="Hesabı kapat">×</button>
+      </div>
+      <div id="cartEmpty" class="cart-empty">Henüz ürün eklenmedi.</div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <label class="note-field">
+          <span>Masa notu</span>
+          <textarea id="tableNote" rows="2" placeholder="Örn. yumurta az pişmiş"></textarea>
+        </label>
+        <div class="grand-total"><span>Hesap toplamı</span><strong id="grandTotal">₺0</strong></div>
+        <button id="checkoutButton" class="checkout-button" type="button" disabled>Masayı kapat</button>
+      </div>
+    </aside>
+  </main>
+
+  <div id="overlay" class="overlay" hidden></div>
+
+  <dialog id="checkoutDialog" class="modal">
+    <form id="checkoutForm" method="dialog">
+      <span class="eyebrow">Hesap kapatma</span>
+      <h2 id="checkoutTitle">Masa 1</h2>
+      <div class="checkout-amount"><span>Tahsil edilecek</span><strong id="checkoutAmount">₺0</strong></div>
+      <fieldset>
+        <legend>Ödeme türü</legend>
+        <label><input type="radio" name="payment" value="Nakit" checked><span>Nakit</span></label>
+        <label><input type="radio" name="payment" value="Kart"><span>Kart</span></label>
+        <label><input type="radio" name="payment" value="Karma"><span>Karma</span></label>
+      </fieldset>
+      <div class="modal-actions">
+        <button id="cancelCheckoutButton" type="button" class="secondary-button">Vazgeç</button>
+        <button id="confirmCheckout" value="default" class="checkout-button">Ödemeyi al ve kapat</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="settingsDialog" class="modal settings-modal">
+    <form id="settingsForm" method="dialog">
+      <span class="eyebrow">Rapor bağlantısı</span>
+      <h2>Google Sheets</h2>
+      <p>Google Apps Script dağıtım adresini girin. Boş bırakılırsa kapanan hesaplar bu cihazda bekletilir.</p>
+      <label class="settings-field">Web uygulaması adresi
+        <input id="sheetEndpoint" type="url" placeholder="https://script.google.com/macros/s/…/exec">
+      </label>
+      <div class="queue-row"><span>Bekleyen kayıt</span><strong id="queueCount">0</strong></div>
+      <div class="modal-actions">
+        <button id="closeSettingsButton" type="button" class="secondary-button">Kapat</button>
+        <button id="retrySyncButton" value="default" class="secondary-button">Tekrar gönder</button>
+        <button id="saveSettingsButton" value="default" class="checkout-button">Kaydet</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
