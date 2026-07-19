@@ -176,6 +176,7 @@ button { cursor: pointer; }
 .modal-actions { display: flex; gap: 8px; margin-top: 18px; }
 .modal-actions .checkout-button { flex: 1; }
 .settings-modal p { color: var(--muted); line-height: 1.55; font-size: 13px; }
+.settings-modal .admin-note { padding: 10px 12px; border-radius: 11px; color: var(--forest); background: var(--forest-soft); font-weight: 700; }
 .settings-modal { max-height: calc(100vh - 28px); overflow-y: auto; }
 .settings-modal code { padding: 1px 4px; border-radius: 5px; background: #eee8de; font-size: 11px; }
 .sheet-help { margin: 0 0 16px; border: 1px solid var(--line); border-radius: 13px; padding: 11px 13px; color: var(--muted); font-size: 12px; }

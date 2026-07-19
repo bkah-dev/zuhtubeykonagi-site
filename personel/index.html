@@ -40,7 +40,7 @@
     <div class="header-actions">
       <span id="staffEmail" class="staff-email"></span>
       <span id="syncStatus" class="sync-status">Yerel kullanım</span>
-      <button id="settingsButton" class="icon-button" type="button" aria-label="Ayarları aç">Ayarlar</button>
+      <button id="settingsButton" class="icon-button" type="button" aria-label="Ayarları aç" hidden>Ayarlar</button>
       <button id="logoutButton" class="icon-button" type="button">Çıkış</button>
     </div>
   </header>
@@ -135,6 +135,7 @@
     <form id="settingsForm" method="dialog">
       <span class="eyebrow">Rapor bağlantısı</span>
       <h2>Google Sheets</h2>
+      <p class="admin-note">Bu global ayar yalnızca yönetici tarafından değiştirilebilir ve tüm personel telefonlarında otomatik kullanılır.</p>
       <p><strong>Normal Google Sheet linki buraya yapıştırılmaz.</strong> Kayıt gönderebilmek için sonu <code>/exec</code> ile biten Google Apps Script web uygulaması adresi gerekir.</p>
       <details class="sheet-help">
         <summary>Bu adresi nasıl alırım?</summary>
