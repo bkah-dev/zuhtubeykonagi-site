@@ -1,5 +1,5 @@
 const TABLE_COUNT = 15;
-const ENDPOINT_KEY = "avlu-pos-sheets-endpoint";
+const ENDPOINT_CACHE_KEY = "avlu-pos-sheets-endpoint-cache";
 const OUTBOX_KEY = "avlu-pos-outbox-v1";
 const config = window.AVLU_SUPABASE_CONFIG;
 
@@ -10,6 +10,8 @@ const state = {
   category: "Tümü",
   search: "",
   user: null,
+  role: null,
+  sheetEndpoint: localStorage.getItem(ENDPOINT_CACHE_KEY) || "",
   menuLoaded: false,
   refreshTimer: null,
   noteTimer: null,
@@ -345,7 +347,7 @@ function queueSale(sale) {
 }
 
 async function syncOutbox() {
-  const endpoint = localStorage.getItem(ENDPOINT_KEY)?.trim();
+  const endpoint = state.sheetEndpoint.trim();
   const rows = getOutbox();
   if (!endpoint || !rows.length || !navigator.onLine) return updateSyncStatus();
   for (const sale of [...rows]) {
@@ -361,7 +363,7 @@ async function syncOutbox() {
 }
 
 function updateSyncStatus() {
-  const endpoint = localStorage.getItem(ENDPOINT_KEY)?.trim();
+  const endpoint = state.sheetEndpoint.trim();
   const count = getOutbox().length;
   el.queueCount.textContent = count;
   el.syncStatus.className = "sync-status";
@@ -378,12 +380,13 @@ function updateSyncStatus() {
 }
 
 function openSettings() {
-  el.sheetEndpoint.value = localStorage.getItem(ENDPOINT_KEY) || "";
+  if (state.role !== "admin") return;
+  el.sheetEndpoint.value = state.sheetEndpoint;
   updateSyncStatus();
   el.settingsDialog.showModal();
 }
 
-function saveSettings(event) {
+async function saveSettings(event) {
   event.preventDefault();
   const endpoint = el.sheetEndpoint.value.trim();
   if (endpoint && !endpoint.startsWith("https://script.google.com/")) {
@@ -391,7 +394,14 @@ function saveSettings(event) {
       ? "Normal Sheet linki değil, Apps Script /exec linki gerekli"
       : "Geçerli bir Apps Script /exec adresi girin");
   }
-  localStorage.setItem(ENDPOINT_KEY, endpoint);
+  el.saveSettingsButton.disabled = true;
+  el.saveSettingsButton.textContent = "Kaydediliyor…";
+  const { error } = await db.rpc("set_sheet_endpoint", { p_endpoint: endpoint });
+  el.saveSettingsButton.disabled = false;
+  el.saveSettingsButton.textContent = "Kaydet";
+  if (error) return handleDataError(error);
+  state.sheetEndpoint = endpoint;
+  localStorage.setItem(ENDPOINT_CACHE_KEY, endpoint);
   el.settingsDialog.close();
   updateSyncStatus();
   syncOutbox();
@@ -414,12 +424,14 @@ async function applySession(session) {
   if (!state.user) {
     el.authGate.hidden = false;
     el.staffEmail.textContent = "";
+    el.settingsButton.hidden = true;
+    state.role = null;
     if (state.channel) await db.removeChannel(state.channel);
     return;
   }
   const { data: membership, error: membershipError } = await db
     .from("staff_members")
-    .select("user_id")
+    .select("user_id,role")
     .eq("user_id", state.user.id)
     .maybeSingle();
   if (membershipError || !membership) {
@@ -429,6 +441,17 @@ async function applySession(session) {
       : "Bu hesap personel olarak yetkilendirilmemiş.";
     await db.auth.signOut();
     return;
+  }
+  state.role = membership.role;
+  el.settingsButton.hidden = state.role !== "admin";
+  const { data: globalSetting, error: settingError } = await db
+    .from("app_settings")
+    .select("value")
+    .eq("setting_key", "sheets_endpoint")
+    .maybeSingle();
+  if (!settingError) {
+    state.sheetEndpoint = globalSetting?.value || "";
+    localStorage.setItem(ENDPOINT_CACHE_KEY, state.sheetEndpoint);
   }
   el.authGate.hidden = true;
   el.staffEmail.textContent = state.user.email || "Personel";
