@@ -1,6 +1,7 @@
 const TABLE_COUNT = 15;
 const ENDPOINT_CACHE_KEY = "avlu-pos-sheets-endpoint-cache";
 const OUTBOX_KEY = "avlu-pos-outbox-v1";
+const STAFF_EMAIL_SUFFIX = "@personel.zuhtubeykonagi.com";
 const config = window.AVLU_SUPABASE_CONFIG;
 
 const state = {
@@ -19,7 +20,7 @@ const state = {
 };
 
 const el = Object.fromEntries([
-  "authGate", "loginForm", "loginEmail", "loginPassword", "loginError", "loginButton",
+  "authGate", "loginForm", "loginUsername", "loginPassword", "loginError", "loginButton",
   "staffEmail", "logoutButton", "syncStatus", "settingsButton", "tableGrid", "openTableCount",
   "emptyState", "orderWorkspace", "activeTableTitle", "headerTotal", "menuSearch", "showCartButton",
   "cartItemCount", "categoryFilters", "menuLoading", "menuGrid", "cartPanel", "cartTitle",
@@ -418,12 +419,15 @@ async function saveSettings(event) {
 async function login(event) {
   event.preventDefault();
   el.loginError.textContent = "";
+  const identifier = el.loginUsername.value.trim().toLowerCase();
+  if (!identifier) return;
+  const email = identifier.includes("@") ? identifier : `${identifier}${STAFF_EMAIL_SUFFIX}`;
   el.loginButton.disabled = true;
   el.loginButton.textContent = "Giriş yapılıyor…";
-  const { error } = await db.auth.signInWithPassword({ email: el.loginEmail.value.trim(), password: el.loginPassword.value });
+  const { error } = await db.auth.signInWithPassword({ email, password: el.loginPassword.value });
   el.loginButton.disabled = false;
   el.loginButton.textContent = "Giriş yap";
-  if (error) el.loginError.textContent = "E-posta veya şifre hatalı.";
+  if (error) el.loginError.textContent = "Kullanıcı adı veya şifre hatalı.";
 }
 
 async function applySession(session) {
@@ -438,7 +442,7 @@ async function applySession(session) {
   }
   const { data: membership, error: membershipError } = await db
     .from("staff_members")
-    .select("user_id,role")
+    .select("user_id,display_name,role")
     .eq("user_id", state.user.id)
     .maybeSingle();
   if (membershipError || !membership) {
@@ -461,7 +465,11 @@ async function applySession(session) {
     localStorage.setItem(ENDPOINT_CACHE_KEY, state.sheetEndpoint);
   }
   el.authGate.hidden = true;
-  el.staffEmail.textContent = state.user.email || "Personel";
+  const accountEmail = state.user.email || "";
+  const accountName = accountEmail.endsWith(STAFF_EMAIL_SUFFIX)
+    ? accountEmail.slice(0, -STAFF_EMAIL_SUFFIX.length)
+    : accountEmail;
+  el.staffEmail.textContent = membership.display_name || accountName || "Personel";
   await Promise.all([loadMenu(), loadRestaurantData()]);
   subscribeToChanges();
   syncOutbox();
