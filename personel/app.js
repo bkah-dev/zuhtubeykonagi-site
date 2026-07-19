@@ -427,7 +427,7 @@ async function login(event) {
   const { error } = await db.auth.signInWithPassword({ email, password: el.loginPassword.value });
   el.loginButton.disabled = false;
   el.loginButton.textContent = "Giriş yap";
-  if (error) el.loginError.textContent = "Kullanıcı adı veya şifre hatalı.";
+  if (error) el.loginError.textContent = "E-posta, kullanıcı adı veya şifre hatalı.";
 }
 
 async function applySession(session) {
