@@ -233,6 +233,18 @@ async function changeQuantity(productId, delta, button) {
   await loadRestaurantData({ silent: true });
 }
 
+async function removeProduct(productId, button) {
+  const row = state.tables[state.activeTable]?.items[productId];
+  if (!row) return;
+  button.disabled = true;
+  const { error } = await db.rpc("remove_table_item", {
+    p_table_number: state.activeTable,
+    p_product_id: row.id
+  });
+  if (error) handleDataError(error);
+  await loadRestaurantData({ silent: true });
+}
+
 function renderOrder() {
   if (!state.activeTable) return;
   const table = state.tables[state.activeTable] || freshTable(state.activeTable);
@@ -274,7 +286,13 @@ function renderOrder() {
     plus.textContent = "+";
     plus.setAttribute("aria-label", `${row.name} artır`);
     plus.addEventListener("click", () => changeQuantity(row.id, 1, plus));
-    controls.append(minus, count, plus);
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "remove-item";
+    remove.textContent = "Sil";
+    remove.setAttribute("aria-label", `${row.name} siparişten sil`);
+    remove.addEventListener("click", () => removeProduct(row.id, remove));
+    controls.append(minus, count, plus, remove);
     wrapper.append(top, controls);
     el.cartItems.append(wrapper);
   });
@@ -368,7 +386,11 @@ function openSettings() {
 function saveSettings(event) {
   event.preventDefault();
   const endpoint = el.sheetEndpoint.value.trim();
-  if (endpoint && !endpoint.startsWith("https://script.google.com/")) return toast("Geçerli bir Apps Script adresi girin");
+  if (endpoint && !endpoint.startsWith("https://script.google.com/")) {
+    return toast(endpoint.includes("docs.google.com/spreadsheets")
+      ? "Normal Sheet linki değil, Apps Script /exec linki gerekli"
+      : "Geçerli bir Apps Script /exec adresi girin");
+  }
   localStorage.setItem(ENDPOINT_KEY, endpoint);
   el.settingsDialog.close();
   updateSyncStatus();
